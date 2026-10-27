@@ -1,0 +1,421 @@
+{
+  "schema": "ecm-prebuilt-received-v1",
+  "audience": "LOCAL_UPSTREAM_BINARY_CANDIDATE",
+  "package_id": "ecm300-gmsl-max96724-jp7",
+  "product": "ECM300G2F",
+  "sensor": "IMX675",
+  "connection": "GMSL",
+  "jetpack": "7",
+  "artifact_set_id": "ecm300-gmsl-max96724-jp7-cf6f7a6a3424-upstream-review",
+  "driver_version": null,
+  "overlay_version": null,
+  "release_approved": false,
+  "runtime_verified": false,
+  "source": {
+    "commit": "cf6f7a6a34240c812339688fd7938c3ed7138a18",
+    "snapshot_sha256": "48b77ce9838ef81e2a25e07e13bbaa2ead900c2acef33ecdde225efbf228f1ad",
+    "snapshot_kind": "REVIEWED_GIT_TREE",
+    "co_located_in_commit": true
+  },
+  "target": {
+    "kernel": "6.8.12-1021-tegra",
+    "arch": "aarch64",
+    "l4t": null,
+    "board": null,
+    "abi_reference": null
+  },
+  "target_observations": {
+    "kernel_basis": "ELF .modinfo vermagic",
+    "arch_basis": "ELF header",
+    "dtbo_declared_compatible": [
+      "nvidia,p3768-0000+p3767-0000",
+      "nvidia,p3768-0000+p3767-0001",
+      "nvidia,p3768-0000+p3767-0003",
+      "nvidia,p3768-0000+p3767-0004",
+      "nvidia,p3768-0000+p3767-0005",
+      "nvidia,p3768-0000+p3767-0000-super",
+      "nvidia,p3768-0000+p3767-0001-super",
+      "nvidia,p3768-0000+p3767-0003-super",
+      "nvidia,p3768-0000+p3767-0004-super",
+      "nvidia,p3768-0000+p3767-0005-super"
+    ],
+    "board_qualification": "NOT_VERIFIED",
+    "compiler_comment_strings": [
+      "GCC: (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+    ]
+  },
+  "build_evidence": {
+    "source_to_binary_proof": "NOT_VERIFIED",
+    "exact_build_target": "NOT_VERIFIED",
+    "target_crc_compatibility": "NOT_VERIFIED",
+    "hardware_validation": "NOT_VERIFIED"
+  },
+  "reception": {
+    "upstream_candidate_sha256": "a51fb0b33ca39996f00d35535b9159f9c23196d2a2b73c48cbed8cc1fe216a60",
+    "delivery_identity_sha256": "6a916552b98cc11d8bbb85b3f500fdd5fbdf3093a4a87a50976a183de5bcfcca",
+    "scope": "Received fixed upstream bytes for local candidate integration; no native or release approval"
+  },
+  "mode_metadata": {
+    "schema_id": "ecm300-gmsl-max96724-jp7-cf6f7a6a3424-b92e9c59bf75",
+    "metadata_only": true,
+    "parsed_dts_agrees_with_dtbo": true,
+    "runtime_verified": false,
+    "modes": [
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_A@30/mode0",
+        "source_id": 0,
+        "active_w": "2560",
+        "active_h": "1440",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_A@30/mode1",
+        "source_id": 1,
+        "active_w": "1920",
+        "active_h": "1080",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_A@30/mode2",
+        "source_id": 2,
+        "active_w": "1600",
+        "active_h": "900",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_A@30/mode3",
+        "source_id": 3,
+        "active_w": "1280",
+        "active_h": "720",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_B@31/mode0",
+        "source_id": 0,
+        "active_w": "2560",
+        "active_h": "1440",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_B@31/mode1",
+        "source_id": 1,
+        "active_w": "1920",
+        "active_h": "1080",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_B@31/mode2",
+        "source_id": 2,
+        "active_w": "1600",
+        "active_h": "900",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_B@31/mode3",
+        "source_id": 3,
+        "active_w": "1280",
+        "active_h": "720",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_C@32/mode0",
+        "source_id": 0,
+        "active_w": "2560",
+        "active_h": "1440",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_C@32/mode1",
+        "source_id": 1,
+        "active_w": "1920",
+        "active_h": "1080",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_C@32/mode2",
+        "source_id": 2,
+        "active_w": "1600",
+        "active_h": "900",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_C@32/mode3",
+        "source_id": 3,
+        "active_w": "1280",
+        "active_h": "720",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_D@22/mode0",
+        "source_id": 0,
+        "active_w": "2560",
+        "active_h": "1440",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_D@22/mode1",
+        "source_id": 1,
+        "active_w": "1920",
+        "active_h": "1080",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_D@22/mode2",
+        "source_id": 2,
+        "active_w": "1600",
+        "active_h": "900",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_D@22/mode3",
+        "source_id": 3,
+        "active_w": "1280",
+        "active_h": "720",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      }
+    ]
+  },
+  "artifacts": {
+    "sensor_ko": {
+      "kind": "ko",
+      "path": "artifacts/imx675_gmsl_96724_4ports.ko",
+      "bytes": 105752,
+      "sha256": "738b0d0b833c5da083a38268ffb2c2312a5ab0a7001bbc2c95013b53e403d059",
+      "install_name": "imx675_gmsl_96724_4ports.ko",
+      "source_filename": "imx675_gmsl_96724_4ports.ko",
+      "upstream": {
+        "commit": "cf6f7a6a34240c812339688fd7938c3ed7138a18",
+        "git_path": "imx675-gmsl-max96724/build_output/imx675_gmsl_96724_4ports.ko",
+        "git_blob": "a0cf97cca201d93e2f2bac2f5c6c1f1d63c328a4"
+      },
+      "module_name": "imx675_gmsl_96724_4ports",
+      "module_version": null,
+      "vermagic": "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64",
+      "depends": [
+        "tegra-camera",
+        "max96717",
+        "max96724"
+      ],
+      "observed_gnu_build_ids": [
+        "d98ec9fe86c9ce995c5174fe587d9b3bedfba625"
+      ],
+      "observed_compiler_comments": [
+        "GCC: (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+      ]
+    },
+    "serializer_ko": {
+      "kind": "ko",
+      "path": "artifacts/max96717.ko",
+      "bytes": 56400,
+      "sha256": "a740fa413ded9fa29efff6b886a34b0daeebf7dc2cd31d63c384fe84b0a4f6b8",
+      "install_name": "max96717.ko",
+      "source_filename": "max96717.ko",
+      "upstream": {
+        "commit": "cf6f7a6a34240c812339688fd7938c3ed7138a18",
+        "git_path": "imx675-gmsl-max96724/build_output/max96717.ko",
+        "git_blob": "642b32ac19ed72c81516f5d6527fa10558870adf"
+      },
+      "module_name": "max96717",
+      "module_version": null,
+      "vermagic": "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64",
+      "depends": [],
+      "observed_gnu_build_ids": [
+        "8d6dd68879ee474d98079ed987f480b348d71e53"
+      ],
+      "observed_compiler_comments": [
+        "GCC: (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+      ]
+    },
+    "deserializer_ko": {
+      "kind": "ko",
+      "path": "artifacts/max96724.ko",
+      "bytes": 59672,
+      "sha256": "31d0754ff21e01c6e499e94a5109ae0708099e81a65c2d0ff85c428715697b05",
+      "install_name": "max96724.ko",
+      "source_filename": "max96724.ko",
+      "upstream": {
+        "commit": "cf6f7a6a34240c812339688fd7938c3ed7138a18",
+        "git_path": "imx675-gmsl-max96724/build_output/max96724.ko",
+        "git_blob": "9b32d6406c62ab28a6f2bf39441ee2c46aa334cf"
+      },
+      "module_name": "max96724",
+      "module_version": null,
+      "vermagic": "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64",
+      "depends": [],
+      "observed_gnu_build_ids": [
+        "abda4af5fea3422c2e34b0887a07d6f6b93c7639"
+      ],
+      "observed_compiler_comments": [
+        "GCC: (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+      ]
+    },
+    "overlay": {
+      "kind": "dtbo",
+      "path": "artifacts/tegra234-p3767-camera-p3768-imx675-4_gmsl_96724.dtbo",
+      "bytes": 25280,
+      "sha256": "b92e9c59bf75bf8f940b64fc54d44f14bc7b7362bd9a1b877bdfd6495383071d",
+      "install_name": "tegra234-p3767-camera-p3768-imx675-4_gmsl_96724.dtbo",
+      "source_filename": "tegra234-p3767-camera-p3768-imx675-4_gmsl_96724.dtbo",
+      "upstream": {
+        "commit": "cf6f7a6a34240c812339688fd7938c3ed7138a18",
+        "git_path": "imx675-gmsl-max96724/build_output/tegra234-p3767-camera-p3768-imx675-4_gmsl_96724.dtbo",
+        "git_blob": "93e4dfbb31cab291f0d5754c52730c69b6085b0f"
+      }
+    },
+    "isp_A": {
+      "kind": "isp",
+      "path": "artifacts/30_IMX675_MAX96724.isp",
+      "bytes": 90445,
+      "sha256": "958c36b230ab5d6a29f0a4a11524a0d7d37d8e475ff5f00686887de0ee668c3f",
+      "install_name": "30_IMX675_MAX96724.isp",
+      "source_filename": "30_IMX675_MAX96724.isp",
+      "upstream": {
+        "commit": "cf6f7a6a34240c812339688fd7938c3ed7138a18",
+        "git_path": "imx675-gmsl-max96724/30_IMX675_MAX96724.isp",
+        "git_blob": "9cfc216f929b8e6bf877596db072062fa57053c0"
+      }
+    },
+    "isp_B": {
+      "kind": "isp",
+      "path": "artifacts/31_IMX675_MAX96724.isp",
+      "bytes": 90445,
+      "sha256": "958c36b230ab5d6a29f0a4a11524a0d7d37d8e475ff5f00686887de0ee668c3f",
+      "install_name": "31_IMX675_MAX96724.isp",
+      "source_filename": "31_IMX675_MAX96724.isp",
+      "upstream": {
+        "commit": "cf6f7a6a34240c812339688fd7938c3ed7138a18",
+        "git_path": "imx675-gmsl-max96724/31_IMX675_MAX96724.isp",
+        "git_blob": "9cfc216f929b8e6bf877596db072062fa57053c0"
+      }
+    },
+    "isp_C": {
+      "kind": "isp",
+      "path": "artifacts/32_IMX675_MAX96724.isp",
+      "bytes": 90445,
+      "sha256": "958c36b230ab5d6a29f0a4a11524a0d7d37d8e475ff5f00686887de0ee668c3f",
+      "install_name": "32_IMX675_MAX96724.isp",
+      "source_filename": "32_IMX675_MAX96724.isp",
+      "upstream": {
+        "commit": "cf6f7a6a34240c812339688fd7938c3ed7138a18",
+        "git_path": "imx675-gmsl-max96724/32_IMX675_MAX96724.isp",
+        "git_blob": "9cfc216f929b8e6bf877596db072062fa57053c0"
+      }
+    },
+    "isp_D": {
+      "kind": "isp",
+      "path": "artifacts/22_IMX675_MAX96724.isp",
+      "bytes": 90445,
+      "sha256": "958c36b230ab5d6a29f0a4a11524a0d7d37d8e475ff5f00686887de0ee668c3f",
+      "install_name": "22_IMX675_MAX96724.isp",
+      "source_filename": "22_IMX675_MAX96724.isp",
+      "upstream": {
+        "commit": "cf6f7a6a34240c812339688fd7938c3ed7138a18",
+        "git_path": "imx675-gmsl-max96724/22_IMX675_MAX96724.isp",
+        "git_blob": "9cfc216f929b8e6bf877596db072062fa57053c0"
+      }
+    },
+    "nito_A": {
+      "kind": "nito",
+      "path": "artifacts/30_IMX675_MAX96724.nito",
+      "bytes": 958476,
+      "sha256": "5131ff3d81314266d606e92d4b4e31396449b1dc8cc016f434b346902cc6be00",
+      "install_name": "30_IMX675_MAX96724.nito",
+      "source_filename": "30_IMX675_MAX96724.nito",
+      "upstream": {
+        "commit": "cf6f7a6a34240c812339688fd7938c3ed7138a18",
+        "git_path": "imx675-gmsl-max96724/30_IMX675_MAX96724.nito",
+        "git_blob": "b63feefa4a8ea11d35fa9828a6d4f85cfdcd6f3f"
+      }
+    },
+    "nito_B": {
+      "kind": "nito",
+      "path": "artifacts/31_IMX675_MAX96724.nito",
+      "bytes": 958476,
+      "sha256": "ce5b06fc49f78155b63d8397ead4c48bacf2901e92fc03f0a195ab385ad0fade",
+      "install_name": "31_IMX675_MAX96724.nito",
+      "source_filename": "31_IMX675_MAX96724.nito",
+      "upstream": {
+        "commit": "cf6f7a6a34240c812339688fd7938c3ed7138a18",
+        "git_path": "imx675-gmsl-max96724/31_IMX675_MAX96724.nito",
+        "git_blob": "0b9cd7f434706130a1299eaef365e7d9e2176b46"
+      }
+    },
+    "nito_C": {
+      "kind": "nito",
+      "path": "artifacts/32_IMX675_MAX96724.nito",
+      "bytes": 958476,
+      "sha256": "9f35b384a0770d13bf66c88bb83c8387da4ff7e8e2f073d4257f17dd0b35abd0",
+      "install_name": "32_IMX675_MAX96724.nito",
+      "source_filename": "32_IMX675_MAX96724.nito",
+      "upstream": {
+        "commit": "cf6f7a6a34240c812339688fd7938c3ed7138a18",
+        "git_path": "imx675-gmsl-max96724/32_IMX675_MAX96724.nito",
+        "git_blob": "068fe1b03adbaf737b9750a305714037e58f2de1"
+      }
+    },
+    "nito_D": {
+      "kind": "nito",
+      "path": "artifacts/22_IMX675_MAX96724.nito",
+      "bytes": 958476,
+      "sha256": "066ff73b53855226baefda62965a9bea58fda8d5939826d1e22d2c284bf53e7c",
+      "install_name": "22_IMX675_MAX96724.nito",
+      "source_filename": "22_IMX675_MAX96724.nito",
+      "upstream": {
+        "commit": "cf6f7a6a34240c812339688fd7938c3ed7138a18",
+        "git_path": "imx675-gmsl-max96724/22_IMX675_MAX96724.nito",
+        "git_blob": "581a68fdb51979c05956a85615ee31db35373b43"
+      }
+    }
+  },
+  "system_module_dependencies": [
+    "tegra-camera"
+  ]
+}

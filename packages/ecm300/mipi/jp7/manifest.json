@@ -1,0 +1,205 @@
+{
+  "schema": "ecm-prebuilt-received-v1",
+  "audience": "LOCAL_UPSTREAM_BINARY_CANDIDATE",
+  "package_id": "ecm300-mipi-jp7",
+  "product": "ECM300",
+  "sensor": "IMX675",
+  "connection": "MIPI",
+  "jetpack": "7",
+  "artifact_set_id": "ecm300-mipi-jp7-f9c50f728c26-upstream-review",
+  "driver_version": "1.0.0",
+  "overlay_version": null,
+  "release_approved": false,
+  "runtime_verified": false,
+  "source": {
+    "commit": "f9c50f728c261da4c4812e5d4d227186a62b3fa9",
+    "snapshot_sha256": "91006e2fa4a6084746c95825a1c03192bcfc46bcececaa330792fd12e66bfb4d",
+    "snapshot_kind": "REVIEWED_GIT_TREE",
+    "co_located_in_commit": true
+  },
+  "target": {
+    "kernel": "6.8.12-1021-tegra",
+    "arch": "aarch64",
+    "l4t": null,
+    "board": null,
+    "abi_reference": null
+  },
+  "target_observations": {
+    "kernel_basis": "ELF .modinfo vermagic",
+    "arch_basis": "ELF header",
+    "dtbo_declared_compatible": [
+      "nvidia,p3768-0000+p3767-0000",
+      "nvidia,p3768-0000+p3767-0001",
+      "nvidia,p3768-0000+p3767-0003",
+      "nvidia,p3768-0000+p3767-0004",
+      "nvidia,p3768-0000+p3767-0005",
+      "nvidia,p3768-0000+p3767-0000-super",
+      "nvidia,p3768-0000+p3767-0001-super",
+      "nvidia,p3768-0000+p3767-0003-super",
+      "nvidia,p3768-0000+p3767-0004-super",
+      "nvidia,p3768-0000+p3767-0005-super"
+    ],
+    "board_qualification": "NOT_VERIFIED",
+    "compiler_comment_strings": [
+      "GCC: (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+    ]
+  },
+  "build_evidence": {
+    "source_to_binary_proof": "NOT_VERIFIED",
+    "exact_build_target": "NOT_VERIFIED",
+    "target_crc_compatibility": "NOT_VERIFIED",
+    "hardware_validation": "NOT_VERIFIED"
+  },
+  "reception": {
+    "upstream_candidate_sha256": "abaa23348f46cea5d3bd8d7ac97208fb273f048ac58a2f2de6dd84da16ef01bf",
+    "delivery_identity_sha256": "6a916552b98cc11d8bbb85b3f500fdd5fbdf3093a4a87a50976a183de5bcfcca",
+    "scope": "Received fixed upstream bytes for local candidate integration; no native or release approval"
+  },
+  "mode_metadata": {
+    "schema_id": "ecm300-mipi-jp7-f9c50f728c26-7294b488a214",
+    "metadata_only": true,
+    "parsed_dts_agrees_with_dtbo": true,
+    "runtime_verified": false,
+    "modes": [
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c@1a/mode0",
+        "source_id": 0,
+        "active_w": "2592",
+        "active_h": "1944",
+        "max_framerate": "80000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c@1a/mode1",
+        "source_id": 1,
+        "active_w": "2592",
+        "active_h": "1944",
+        "max_framerate": "60000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c@1a/mode2",
+        "source_id": 2,
+        "active_w": "2592",
+        "active_h": "1944",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c@1a/mode3",
+        "source_id": 3,
+        "active_w": "2560",
+        "active_h": "1440",
+        "max_framerate": "60000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c@1a/mode4",
+        "source_id": 4,
+        "active_w": "2560",
+        "active_h": "1440",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c@1a/mode5",
+        "source_id": 5,
+        "active_w": "1920",
+        "active_h": "1080",
+        "max_framerate": "60000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c@1a/mode6",
+        "source_id": 6,
+        "active_w": "1920",
+        "active_h": "1080",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "4"
+      }
+    ]
+  },
+  "artifacts": {
+    "sensor_ko": {
+      "kind": "ko",
+      "path": "artifacts/ECM300.ko",
+      "bytes": 81536,
+      "sha256": "47414379bdbf2dd59fc93f596a4e8ec6c3a8c4af60286234adbb0b4a52b89670",
+      "install_name": "ECM300.ko",
+      "source_filename": "ECM300.ko",
+      "upstream": {
+        "commit": "f9c50f728c261da4c4812e5d4d227186a62b3fa9",
+        "git_path": "output/ECM300.ko",
+        "git_blob": "aa5a76b96b243f6c7bc438063bf9d08283cd4e4a"
+      },
+      "module_name": "ECM300",
+      "module_version": "1.0.0",
+      "vermagic": "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64",
+      "depends": [
+        "tegra-camera"
+      ],
+      "observed_gnu_build_ids": [
+        "922a4781beb3249743f667571a13d48ce14e97f2"
+      ],
+      "observed_compiler_comments": [
+        "GCC: (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+      ]
+    },
+    "overlay": {
+      "kind": "dtbo",
+      "path": "artifacts/tegra234-p3767-camera-p3768-ECM300.dtbo",
+      "bytes": 9080,
+      "sha256": "7294b488a214e3d67f7563f0bc8ad69c0f2a6cdb05bd8f3c38afef7bae70d88d",
+      "install_name": "tegra234-p3767-camera-p3768-ECM300.dtbo",
+      "source_filename": "tegra234-p3767-camera-p3768-ECM300.dtbo",
+      "upstream": {
+        "commit": "f9c50f728c261da4c4812e5d4d227186a62b3fa9",
+        "git_path": "output/tegra234-p3767-camera-p3768-ECM300.dtbo",
+        "git_blob": "36f305d93a39d11e1351871252d8708b66f00e87"
+      }
+    },
+    "isp": {
+      "kind": "isp",
+      "path": "artifacts/Transcend_MIPI_ECM300.isp",
+      "bytes": 90515,
+      "sha256": "a2267e96041b07879c01a0bb2ed8e11e8bf5bfd19d88a6d6b1d0cd4c9e2ce10a",
+      "install_name": "camera_overrides.isp",
+      "source_filename": "Transcend_MIPI_ECM300.isp",
+      "upstream": {
+        "commit": "f9c50f728c261da4c4812e5d4d227186a62b3fa9",
+        "git_path": "Transcend_MIPI_ECM300.isp",
+        "git_blob": "caa14bf8973295380f13bc35eb8af8bdc4b6c287"
+      }
+    },
+    "nito": {
+      "kind": "nito",
+      "path": "artifacts/Transcend_MIPI_ECM300.nito",
+      "bytes": 958476,
+      "sha256": "d97d004a0af98fd762c0e82581874b10ad1d07e7ca1fd477fbe925440a4ef105",
+      "install_name": "Transcend_MIPI_ECM300.nito",
+      "source_filename": "Transcend_MIPI_ECM300.nito",
+      "upstream": {
+        "commit": "f9c50f728c261da4c4812e5d4d227186a62b3fa9",
+        "git_path": "Transcend_MIPI_ECM300.nito",
+        "git_blob": "6fc1f09cc6d15a400e8aeb1910a08cfbd059a7dc"
+      }
+    }
+  },
+  "system_module_dependencies": [
+    "tegra-camera"
+  ]
+}

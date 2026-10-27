@@ -1,0 +1,22 @@
+# Local installation workspace and generated records
+/workspace/
+/workspaces/
+/state/
+/logs/
+/reports/
+/backups/
+/cache/
+/tmp/
+/temp/
+
+# Python and editor caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Keep fixed packages, including KO / DTBO / ISP / NITO, tracked.

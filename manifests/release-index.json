@@ -1,0 +1,46 @@
+{
+  "schema": "ecm-release-index-v1",
+  "release_authorized": false,
+  "packages": {
+    "ecm100-mipi-jp6": {
+      "status": "AWAITING_INTERNAL_FIXED_SOURCE_AND_ARTIFACT_HANDOFF",
+      "manifest": null
+    },
+    "ecm300-mipi-jp6": {
+      "status": "AWAITING_INTERNAL_FIXED_SOURCE_AND_ARTIFACT_HANDOFF",
+      "manifest": null
+    },
+    "ecm400-mipi-jp6": {
+      "status": "AWAITING_INTERNAL_FIXED_SOURCE_AND_ARTIFACT_HANDOFF",
+      "manifest": null
+    },
+    "ecm300-gmsl-max96724-jp6": {
+      "status": "AWAITING_INTERNAL_FIXED_SOURCE_AND_ARTIFACT_HANDOFF",
+      "manifest": null
+    },
+    "ecm100-mipi-jp7": {
+      "status": "FIXED_ARTIFACTS_RECEIVED",
+      "manifest": "packages/ecm100/mipi/jp7/manifest.json",
+      "manifest_sha256": "ed2b56c6ebe4c43ac3a7e0e62bf39430696a9ade367ada9ed26160b50b49f941",
+      "qualification": "LOCAL_UPSTREAM_BINARY_CANDIDATE_NOT_RELEASE_APPROVED"
+    },
+    "ecm300-mipi-jp7": {
+      "status": "FIXED_ARTIFACTS_RECEIVED",
+      "manifest": "packages/ecm300/mipi/jp7/manifest.json",
+      "manifest_sha256": "2c290b3d57625a710011012d5f3979ad61fe55d6e3cfa937ef7f877c95d02d62",
+      "qualification": "LOCAL_UPSTREAM_BINARY_CANDIDATE_NOT_RELEASE_APPROVED"
+    },
+    "ecm400-mipi-jp7": {
+      "status": "FIXED_ARTIFACTS_RECEIVED",
+      "manifest": "packages/ecm400/mipi/jp7/manifest.json",
+      "manifest_sha256": "730491cb5796c76b5e8abe1a00f89aee7400dd79f3620c6a0fb8867ae8fff2cc",
+      "qualification": "LOCAL_UPSTREAM_BINARY_CANDIDATE_NOT_RELEASE_APPROVED"
+    },
+    "ecm300-gmsl-max96724-jp7": {
+      "status": "FIXED_ARTIFACTS_RECEIVED",
+      "manifest": "packages/ecm300/gmsl/max96717-max96724/jp7/manifest.json",
+      "manifest_sha256": "99a5d87b7b55eacfba6843e51cafb553f6dc5474327680a6820722d30114599c",
+      "qualification": "LOCAL_UPSTREAM_BINARY_CANDIDATE_NOT_RELEASE_APPROVED"
+    }
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "schema": "ecm-prebuilt-received-v1",
+  "audience": "LOCAL_UPSTREAM_BINARY_CANDIDATE",
+  "package_id": "ecm100-mipi-jp7",
+  "product": "ECM100",
+  "sensor": "GC2093",
+  "connection": "MIPI",
+  "jetpack": "7",
+  "artifact_set_id": "ecm100-mipi-jp7-ac20810660da-upstream-review",
+  "driver_version": null,
+  "overlay_version": null,
+  "release_approved": false,
+  "runtime_verified": false,
+  "source": {
+    "commit": "ac20810660da33bfbe03fd27ee464d99ab444094",
+    "snapshot_sha256": "641b8bf357e3db9eb3de80e962b0fc1aac31d7f410bc54680b472e3ecc9f5b96",
+    "snapshot_kind": "REVIEWED_GIT_TREE",
+    "co_located_in_commit": true
+  },
+  "target": {
+    "kernel": "6.8.12-1021-tegra",
+    "arch": "aarch64",
+    "l4t": null,
+    "board": null,
+    "abi_reference": null
+  },
+  "target_observations": {
+    "kernel_basis": "ELF .modinfo vermagic",
+    "arch_basis": "ELF header",
+    "dtbo_declared_compatible": [
+      "nvidia,p3768-0000+p3767-0000",
+      "nvidia,p3768-0000+p3767-0001",
+      "nvidia,p3768-0000+p3767-0003",
+      "nvidia,p3768-0000+p3767-0004",
+      "nvidia,p3768-0000+p3767-0005",
+      "nvidia,p3768-0000+p3767-0000-super",
+      "nvidia,p3768-0000+p3767-0001-super",
+      "nvidia,p3768-0000+p3767-0003-super",
+      "nvidia,p3768-0000+p3767-0004-super",
+      "nvidia,p3768-0000+p3767-0005-super"
+    ],
+    "board_qualification": "NOT_VERIFIED",
+    "compiler_comment_strings": [
+      "GCC: (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+    ]
+  },
+  "build_evidence": {
+    "source_to_binary_proof": "NOT_VERIFIED",
+    "exact_build_target": "NOT_VERIFIED",
+    "target_crc_compatibility": "NOT_VERIFIED",
+    "hardware_validation": "NOT_VERIFIED"
+  },
+  "reception": {
+    "upstream_candidate_sha256": "12b9e550675d0b37cb4bbc91b0c30b80139b312e98db881e44f4b3e56eb2e05e",
+    "delivery_identity_sha256": "36f9c9c374ec90f97456b41713a0e7d3d0ea265294bb3ec6e3473ee725679ede",
+    "scope": "Received fixed upstream bytes for local candidate integration; no native or release approval"
+  },
+  "mode_metadata": {
+    "schema_id": "ecm100-mipi-jp7-ac20810660da-dfe50920565f",
+    "metadata_only": true,
+    "parsed_dts_agrees_with_dtbo": true,
+    "runtime_verified": false,
+    "modes": [
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_gc2093_c@37/mode0",
+        "source_id": 0,
+        "active_w": "1920",
+        "active_h": "1080",
+        "max_framerate": "60000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "2"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_gc2093_c@37/mode1",
+        "source_id": 1,
+        "active_w": "1920",
+        "active_h": "1080",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "2"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_gc2093_c@37/mode2",
+        "source_id": 2,
+        "active_w": "1280",
+        "active_h": "720",
+        "max_framerate": "60000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "2"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_gc2093_c@37/mode3",
+        "source_id": 3,
+        "active_w": "1280",
+        "active_h": "720",
+        "max_framerate": "30000000",
+        "framerate_factor": "1000000",
+        "mode_type": "bayer",
+        "num_lanes": "2"
+      }
+    ]
+  },
+  "artifacts": {
+    "sensor_ko": {
+      "kind": "ko",
+      "path": "artifacts/ECM100.ko",
+      "bytes": 84400,
+      "sha256": "9c8b217fe6d4c11065d770273ed7b23f991ff2f61e98c7bfc0128bda3c310e91",
+      "install_name": "ECM100.ko",
+      "source_filename": "ECM100.ko",
+      "upstream": {
+        "commit": "ac20810660da33bfbe03fd27ee464d99ab444094",
+        "git_path": "output/ECM100.ko",
+        "git_blob": "ca56b23ac4e172b2af5d26be5831afec72d4e56f"
+      },
+      "module_name": "ECM100",
+      "module_version": null,
+      "vermagic": "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64",
+      "depends": [
+        "tegra-camera"
+      ],
+      "observed_gnu_build_ids": [
+        "123f48e12a25201870adf293731eecf8592ca828"
+      ],
+      "observed_compiler_comments": [
+        "GCC: (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+      ]
+    },
+    "overlay": {
+      "kind": "dtbo",
+      "path": "artifacts/tegra234-p3767-camera-p3768-ECM100.dtbo",
+      "bytes": 7302,
+      "sha256": "dfe50920565f8ba2c04f87c5418a46097c1c543fce4f163ac8dbd118e887cad0",
+      "install_name": "tegra234-p3767-camera-p3768-ECM100.dtbo",
+      "source_filename": "tegra234-p3767-camera-p3768-ECM100.dtbo",
+      "upstream": {
+        "commit": "ac20810660da33bfbe03fd27ee464d99ab444094",
+        "git_path": "output/tegra234-p3767-camera-p3768-ECM100.dtbo",
+        "git_blob": "cfbf683ef5e2c55002dd89396528648e56e01cc2"
+      }
+    },
+    "isp": {
+      "kind": "isp",
+      "path": "artifacts/Transcend_MIPI_ECM100.isp",
+      "bytes": 90830,
+      "sha256": "f6a6f442b59f96c9808b079a5695c8872e615162ca14b3f1201560943318878f",
+      "install_name": "camera_overrides.isp",
+      "source_filename": "Transcend_MIPI_ECM100.isp",
+      "upstream": {
+        "commit": "ac20810660da33bfbe03fd27ee464d99ab444094",
+        "git_path": "Transcend_MIPI_ECM100.isp",
+        "git_blob": "4efcb4780cfb61cd1970abc71669eb5982a3e1b1"
+      }
+    },
+    "nito": {
+      "kind": "nito",
+      "path": "artifacts/Transcend_MIPI_ECM100.nito",
+      "bytes": 958476,
+      "sha256": "3238af7dcfa60d309b241fb0167fd47c1e94d4fe4913506af9322ef7daddf2c2",
+      "install_name": "Transcend_MIPI_ECM100.nito",
+      "source_filename": "Transcend_MIPI_ECM100.nito",
+      "upstream": {
+        "commit": "ac20810660da33bfbe03fd27ee464d99ab444094",
+        "git_path": "Transcend_MIPI_ECM100.nito",
+        "git_blob": "578175721d63810e9aa018f361f9687001473fbd"
+      }
+    }
+  },
+  "system_module_dependencies": [
+    "tegra-camera"
+  ]
+}

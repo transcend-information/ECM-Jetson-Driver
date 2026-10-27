@@ -1,0 +1,11 @@
+# Preserve bytes unless a source/document rule explicitly selects LF.
+* -text
+*.sh text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# These files are bound to SHA256 values; never normalize their line endings.
+manifests/** -text
+packages/** -text
