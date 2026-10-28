@@ -190,9 +190,9 @@ def main(argv=None):
             ui.line('Workspace: ' + str(engine.workspace))
             received = [k for k in PUBLIC_PACKAGES if catalog.manifest(k) is not None]
             ui.line('Package Status: ' + str(len(received)) + ' received / ' + str(len(PUBLIC_PACKAGES)-len(received)) + ' awaiting; target / hardware Not verified')
-            for key in received:
-                item=PACKAGES[key]
-                ui.line('Received: ' + item['product'] + ' / ' + item['connection'] + ' / JP' + item['jetpack'])
+            # for key in received:
+            #     item=PACKAGES[key]
+            #     ui.line('Received: ' + item['product'] + ' / ' + item['connection'] + ' / JP' + item['jetpack'])
             if system.simulation:
                 ui.line('LOCAL_SIMULATION / NOT FOR RELEASE / no hardware verification')
             for warning in record['warnings']:
