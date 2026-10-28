@@ -28,7 +28,8 @@ ecm-camera-installer/
 │       └── mipi/jp7/
 └── docs/
     ├── structure.md
-    └── resolutions.md
+    ├── resolutions.md
+    └── images/           # README startup screenshots
 ```
 
 | Path | Contents |
@@ -46,6 +47,7 @@ ecm-camera-installer/
 | [.gitignore](../.gitignore) | Excludes locally generated state, logs, backups, and caches |
 | [.gitattributes](../.gitattributes) | Uses LF for code and documentation while preserving the original bytes of fixed manifests and artifacts |
 | [resolutions.md](resolutions.md) | Mode and resolution reference, with JP6 above JP7 |
+| [images/](images/) | Screenshots showing archive extraction, opening a terminal, and the installer menu |
 
 ## Package Layout
 

@@ -14,10 +14,10 @@ Four JetPack 7.x packages are currently included and have passed local simulated
 
 | Model | Sensor | Connection | JetPack 6.x | JetPack 7.x |
 |---|---|---|---|---|
-| ECM100 | GC2093 | MIPI | Pending inclusion | Included |
-| ECM300 | IMX675 | MIPI | Pending inclusion | Included |
-| ECM400 | IMX415 | MIPI | Pending inclusion | Included |
-| ECM300G2F | IMX675 | GMSL (MAX96717/MAX96724) | Pending inclusion | Included |
+| TS-ECM100M22 | GC2093 | MIPI | Pending inclusion | Included |
+| TS-ECM300M22 | IMX675 | MIPI | Pending inclusion | Included |
+| TS-ECM400M22 | IMX415 | MIPI | Pending inclusion | Included |
+| TS-ECM300G2F | IMX675 | GMSL (MAX96724) | Pending inclusion | Included |
 
 “Included” means the package files are present and have passed integrity checks and local simulation. It does not mean that installation or image capture has been verified on a real device. Packages marked “Pending inclusion” cannot currently be installed.
 
@@ -31,10 +31,10 @@ The following specifications are declared by the included **JetPack 7.x** packag
 
 | Model | Connection | Resolutions and FPS |
 |---|---|---|
-| ECM100 | MIPI | 1920×1080 @ 60/30 FPS; 1280×720 @ 60/30 FPS |
-| ECM300 | MIPI | 2592×1944 @ 80/60/30 FPS; 2560×1440 @ 60/30 FPS; 1920×1080 @ 60/30 FPS |
-| ECM400 | MIPI | 3840×2160 @ 60/30 FPS; 2560×1440 @ 60/30 FPS; 1920×1080 @ 90/60/30 FPS |
-| ECM300G2F | GMSL | 2560×1440, 1920×1080, 1600×900, and 1280×720, all at 30 FPS |
+| TS-ECM100M22 | MIPI | 1920×1080 @ 60/30 FPS; 1280×720 @ 60/30 FPS |
+| TS-ECM300M22 | MIPI | 2592×1944 @ 80/60/30 FPS; 2560×1440 @ 60/30 FPS; 1920×1080 @ 60/30 FPS |
+| TS-ECM400M22 | MIPI | 3840×2160 @ 60/30 FPS; 2560×1440 @ 60/30 FPS; 1920×1080 @ 90/60/30 FPS |
+| TS-ECM300G2F | GMSL (MAX96724) | 2560×1440, 1920×1080, 1600×900, and 1280×720, all at 30 FPS |
 
 The GMSL specifications apply to each camera channel. Simultaneous capture across multiple channels will continue to be validated. Drivers, mode numbers, and capture processing must be checked against the corresponding package for each JetPack version.
 
@@ -51,11 +51,29 @@ The target output specifications for the local JP6 MIPI versions have been docum
 
 ### Open the Menu
 
-Open a terminal in the root directory of the extracted package and run:
+**1. Extract the package.**
+
+Right-click the downloaded `.tar.gz` archive and select **Extract Here**.
+
+![Extract the installer archive using Extract Here](docs/images/01-extract-archive.png)
+
+**2. Open a terminal in the installer folder.**
+
+Right-click the extracted installer folder and select **Open in Terminal**. Use the folder that contains `ecm_camera_manager.sh`.
+
+![Open a terminal in the extracted installer folder](docs/images/02-open-terminal.png)
+
+**3. Open the menu.**
+
+Run the following command in that terminal:
 
 ```bash
 bash ecm_camera_manager.sh
 ```
+
+![Installer home page after running bash ecm_camera_manager.sh](docs/images/03-installer-menu.png)
+
+Menu layout example captured from an internal test package that includes eight package sets. This repository currently includes the four JP7 packages listed in **Models and Packages** above. Displayed installation messages depend on the selected workspace and do not confirm completed installation.
 
 To display the installer version, run `bash ecm_camera_manager.sh --version`. The archive is named `ecm-jetson-camera-installer-v0.1.0.tar.gz`.
 

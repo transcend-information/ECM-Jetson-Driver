@@ -2,6 +2,14 @@
 
 This file tracks installer versions. Sensor drivers and DTBOs retain their existing versions and package identities.
 
+## Unreleased
+
+### Documentation
+
+- Use TS ordering model names in the README and resolution tables.
+- Label the public GMSL connection as `GMSL (MAX96724)` while retaining the existing package paths and serializer/deserializer configuration.
+- Add illustrated startup steps for extracting the archive, opening a terminal, and launching the menu. Identify the menu screenshot as an internal-package example; package availability remains unchanged.
+
 ## v0.1.0 — 2026-10-27
 
 ### Package Contents
