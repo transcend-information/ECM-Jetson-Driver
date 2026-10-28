@@ -30,17 +30,16 @@
       "manifest_sha256": "2c290b3d57625a710011012d5f3979ad61fe55d6e3cfa937ef7f877c95d02d62",
       "qualification": "LOCAL_UPSTREAM_BINARY_CANDIDATE_NOT_RELEASE_APPROVED"
     },
-    "ecm400-mipi-jp7": {
-      "status": "FIXED_ARTIFACTS_RECEIVED",
-      "manifest": "packages/ecm400/mipi/jp7/manifest.json",
-      "manifest_sha256": "730491cb5796c76b5e8abe1a00f89aee7400dd79f3620c6a0fb8867ae8fff2cc",
-      "qualification": "LOCAL_UPSTREAM_BINARY_CANDIDATE_NOT_RELEASE_APPROVED"
-    },
     "ecm300-gmsl-max96724-jp7": {
       "status": "FIXED_ARTIFACTS_RECEIVED",
       "manifest": "packages/ecm300/gmsl/max96717-max96724/jp7/manifest.json",
       "manifest_sha256": "9e50d41b53cf790d3285e0f52f2c0e70ab49abff0c81bcbf850544afc6e44439",
       "qualification": "LOCAL_UPSTREAM_BINARY_CANDIDATE_NOT_RELEASE_APPROVED"
+    },
+    "ecm400-gmsl-max96724-jp7": {
+      "status": "FIXED_ARTIFACTS_RECEIVED",
+      "manifest": "packages/ecm400/gmsl/max96717-max96724/jp7/manifest.json",
+      "manifest_sha256": "e8f12a9f704f458bbc450bc2a6cca3d4d257de273623ea5af9b26738344bfd33"
     }
   }
 }

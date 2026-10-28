@@ -22,7 +22,7 @@ ecm-camera-installer/
 │   │   ├── mipi/jp7/
 │   │   └── gmsl/max96717-max96724/jp7/
 │   └── ecm400/
-│       └── mipi/jp7/
+│       └── gmsl/max96717-max96724/jp7/
 └── docs/
     ├── structure.md
     ├── resolutions.md
@@ -52,7 +52,7 @@ MIPI packages use `packages/<family>/mipi/<jetpack>/`. GMSL packages use `packag
 | ECM100 | MIPI | [ecm100/mipi/jp7/](../packages/ecm100/mipi/jp7/) |
 | ECM300 | MIPI | [ecm300/mipi/jp7/](../packages/ecm300/mipi/jp7/) |
 | ECM300G2F | GMSL, MAX96717/MAX96724 | [ecm300/gmsl/max96717-max96724/jp7/](../packages/ecm300/gmsl/max96717-max96724/jp7/) |
-| ECM400 | MIPI | [ecm400/mipi/jp7/](../packages/ecm400/mipi/jp7/) |
+| ECM400G2F | GMSL, MAX96717/MAX96724 | [ecm400/gmsl/max96717-max96724/jp7/](../packages/ecm400/gmsl/max96717-max96724/jp7/) |
 
 The `ecm300/` directory groups the product family. The GMSL product remains **ECM300G2F** in its manifest, menus, and logs; it is not interchangeable with the ECM300 MIPI package.
 
@@ -61,6 +61,7 @@ Each JetPack package directory contains:
 ```text
 jp7/
 ├── manifest.json
+├── evidence/            # Fixed source and artifact receipt, when included
 └── artifacts/
     └── Prebuilt KO, DTBO, ISP, and NITO files
 ```
@@ -94,6 +95,29 @@ The JetPack directory groups platform versions. Exact kernel, L4T, board, and co
 
 This guide documents the four included JetPack 7.x packages shown above.
 
+### ECM400G2F JP7 artifact set
+
+The ECM400G2F package contains six original artifacts from commit `f987e61f1880d4bcf33033235d4d692e210c00ef`:
+
+| Role | Package filename under `artifacts/` | Upstream directory | Installation filename |
+|---|---|---|---|
+| Sensor KO | `ECM400_MAX96724.ko` | `imx415-gmsl-max96724/build_output/` | `ECM400_MAX96724.ko` |
+| Serializer KO | `MAX96717.ko` | `imx415-gmsl-max96724/build_output/` | `MAX96717.ko` |
+| Deserializer KO | `MAX96724.ko` | `imx415-gmsl-max96724/build_output/` | `MAX96724.ko` |
+| Overlay | `tegra234-p3767-camera-p3768-ECM400_MAX96724.dtbo` | `imx415-gmsl-max96724/build_output/` | `ecm-<transaction-id>.dtbo` |
+| ISP | `Transcend_GMSL_ECM400.isp` | `imx415-gmsl-max96724/` | `Transcend_GMSL_ECM400.isp` |
+| NITO | `Transcend_GMSL_ECM400.nito` | `imx415-gmsl-max96724/` | `Transcend_GMSL_ECM400.nito` |
+
+The upstream installation script reads ISP/NITO from its own directory (lines 98–106); its output-copy step exports KO/DTBO only (lines 448–471). The source-root ISP matches the `build_output/` copy, but the two NITO files differ despite equal size. This candidate uses the script-selected source-root NITO (Git blob `cf71ef899774b6c02ffe1a50ffdcde0726b02ec2`), with original name and bytes. The alternate output NITO (blob `8c020d50398f82179b1fe7c4bea46fd31a8d1105`) is retained in internal review evidence only. It is not included or treated as equivalent.
+
+KO names match ELF module names. The sensor depends on `tegra-camera`, `MAX96717`, and `MAX96724`; the serializer and deserializer have no additional declared module dependencies. All three KOs declare kernel `6.8.12-1021-tegra` and contain no module version. KOs use `/lib/modules/<kernel>/updates/drivers/media/i2c/`; ISP/NITO use `/var/nvidia/nvcam/settings/`; the transaction overlay uses `/boot/`.
+
+The overlay configures one channel with badge `Transcend_GMSL_ECM400`, six Linear modes, VC0, four lanes, and `serial_c`. See the [mode reference](resolutions.md). Exact board/L4T/ABI and hardware operation remain unverified.
+
+The active JP7 catalog uses the new ID `ecm400-gmsl-max96724-jp7`. The previous `ecm400-mipi-jp7` ID is retained only inside existing transaction histories; it is never aliased to GMSL. Restore uses saved transaction plans and backups. Local simulation verifies an old MIPI installation can switch to this GMSL package, restore the original MIPI files and exact state bytes, then restore the initial system. It also verifies both GMSL packages can switch and restore their own SerDes bytes despite shared installation filenames.
+
 ## Workspace and Delivery Records
 
 The installation workspace should be separate from the package files and can be selected with `--workspace`. The local `authoring/`, `review/`, `deliveries/`, and VS Code workspace file are outside the repository root. The archive excludes `.git/`, test data, and local operation records.
+
+Public packaging uses an explicit file allowlist derived from the reviewed candidate and its release index. Pending JP6 packages and residual old ECM400 MIPI working files are excluded. Do not archive an entire development working directory as the public package. The internal ECM400 MIPI JP6 contract is marked legacy-only and excluded from new-install menus and home-page package counts. Saved transaction restore remains available.

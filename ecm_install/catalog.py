@@ -6,6 +6,8 @@ AWAITING = 'AWAITING_INTERNAL_FIXED_SOURCE_AND_ARTIFACT_HANDOFF'
 PACKAGES = {}
 for family in ('6', '7'):
     for product, sensor in (('ECM100', 'GC2093'), ('ECM300', 'IMX675'), ('ECM400', 'IMX415')):
+        if family == '7' and product == 'ECM400':
+            continue
         key = product.lower() + '-mipi-jp' + family
         roles = {'sensor_ko':'ko', 'overlay':'dtbo', 'isp':'isp'}
         if family == '7':
@@ -21,6 +23,17 @@ for family in ('6', '7'):
         roles['nito'] = 'nito'
     PACKAGES[key] = dict(id=key, product='ECM300G2F', sensor='IMX675', connection='GMSL',
                          jetpack=family, port='A-D', serdes='MAX96717/MAX96724', roles=roles, status=AWAITING)
+    if family == '7':
+        key = 'ecm400-gmsl-max96724-jp7'
+        PACKAGES[key] = dict(id=key, product='ECM400G2F', sensor='IMX415', connection='GMSL',
+                             jetpack=family, port='Single channel / VC0', serdes='MAX96717/MAX96724',
+                             roles=dict(roles), status=AWAITING)
+
+
+# Keep the old JP6 identity for internal/history use, outside new public installs.
+PACKAGES['ecm400-mipi-jp6']['legacy_only'] = True
+PUBLIC_PACKAGES = {key: item for key, item in PACKAGES.items() if not item.get('legacy_only', False)}
+
 
 
 class Catalog:

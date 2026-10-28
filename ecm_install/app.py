@@ -3,7 +3,7 @@ import argparse
 from pathlib import Path
 import sys
 from . import VERSION, ui
-from .catalog import Catalog, PACKAGES
+from .catalog import Catalog, PACKAGES, PUBLIC_PACKAGES
 from .contracts import verify_manifest, compare_environment, package_evidence, RECEIVED_SCHEMA
 from .system import SystemIO
 from .workspace import resolve_workspace
@@ -38,7 +38,7 @@ def select_package(host, catalog):
                 continue
         ui.begin('Home > Install / Switch Camera > Camera setup', VERSION)
         ui.line('Package family: JetPack ' + family + '.x (host detection does not identify the camera)')
-        keys = [key for key, item in PACKAGES.items() if item['jetpack'] == family]
+        keys = [key for key, item in PUBLIC_PACKAGES.items() if item['jetpack'] == family]
         for index, key in enumerate(keys, 1):
             item = PACKAGES[key]
             status = 'Received' if catalog.manifest(key) is not None else 'Awaiting artifacts'
@@ -188,8 +188,8 @@ def main(argv=None):
                 ui.line('Installed State: Not verified (' + str(exc) + ')')
             ui.line('Camera Device: Not verified; no active probe or capture is performed')
             ui.line('Workspace: ' + str(engine.workspace))
-            received = [k for k in PACKAGES if catalog.manifest(k) is not None]
-            ui.line('Package Status: ' + str(len(received)) + ' received / ' + str(8-len(received)) + ' awaiting; target / hardware Not verified')
+            received = [k for k in PUBLIC_PACKAGES if catalog.manifest(k) is not None]
+            ui.line('Package Status: ' + str(len(received)) + ' received / ' + str(len(PUBLIC_PACKAGES)-len(received)) + ' awaiting; target / hardware Not verified')
             for key in received:
                 item=PACKAGES[key]
                 ui.line('Received: ' + item['product'] + ' / ' + item['connection'] + ' / JP' + item['jetpack'])

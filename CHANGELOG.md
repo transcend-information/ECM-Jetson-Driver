@@ -4,6 +4,15 @@ This file tracks installer versions. Driver and DTBO versions are recorded separ
 
 ## Unreleased
 
+### ECM400G2F replaces the public ECM400 MIPI JP7 package
+
+- Replace the ECM400 MIPI JP7 catalog entry with TS-ECM400G2F / GMSL (MAX96724), using six original artifacts from `f987e61f1880d4bcf33033235d4d692e210c00ef` without rebuilding or renaming them.
+- Preserve the upstream installation script's source-root ISP/NITO selection. Record the differing output NITO separately in review evidence.
+- Document the compiled single-channel topology and six Linear modes, including 4K30 and 1080p90/60/30; remove the old public ECM400 MIPI 4K60 specification.
+- Preserve historical MIPI transaction identities and backup/restore behavior. Hide the internal ECM400 MIPI JP6 contract from new-install menus and derive home-page counts from public choices. Keep the other three public JP7 packages unchanged and JP6 pending outside this candidate.
+- Keep real-device installation/restore disabled. Integrity checks and local transaction simulations do not establish hardware qualification.
+
+
 ### ECM300G2F GMSL / JetPack 7.x
 
 - Replace the complete fixed GMSL artifact set with upstream commit `66e13ae803064226ff489a70b0a52c190f87b4af`: three KOs, one DTBO, one shared ISP, and one shared NITO.

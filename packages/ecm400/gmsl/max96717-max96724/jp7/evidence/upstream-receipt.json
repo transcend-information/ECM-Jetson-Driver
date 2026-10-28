@@ -1,0 +1,607 @@
+{
+  "schema": "ecm-upstream-artifact-receipt-v1",
+  "source_tree": {
+    "commit": "f987e61f1880d4bcf33033235d4d692e210c00ef",
+    "tree": "27b9706f2f36f70aecd1a71809c8c7d629fad80d",
+    "files": [
+      {
+        "path": "README.md",
+        "mode": "100644",
+        "git_blob": "d6d78d6120a4c6b58b33c806c7af73cc2e3ea71a",
+        "bytes": 1094,
+        "sha256": "fd2cba8c1a25e43757505560a58af13e3cea70c125a291889f1693750f7d530e"
+      },
+      {
+        "path": "imx415-gmsl-max96724/ECM400_MAX96724.c",
+        "mode": "100644",
+        "git_blob": "90dc631782841d87b188bc4cc5578575a86da0c9",
+        "bytes": 34644,
+        "sha256": "c9101a0bf347041c47fa7eea3a3f44f7bf7145e0414c77ebb8cc981f377dbe3e"
+      },
+      {
+        "path": "imx415-gmsl-max96724/MAX96717.c",
+        "mode": "100644",
+        "git_blob": "daa6e8cb35ecbe9da44287af123dc61e549bf568",
+        "bytes": 17419,
+        "sha256": "17f1a8242c3af28608578ec81722cb4ae00e5c1dcc38c158a73edee664d2fed5"
+      },
+      {
+        "path": "imx415-gmsl-max96724/MAX96724.c",
+        "mode": "100644",
+        "git_blob": "2c305f9e40696df2aef872d1588b8bcb7e03a117",
+        "bytes": 26408,
+        "sha256": "10f3952d2ac7bc74046e8c54c5cb30308b294a9068105986edd35e331451de5e"
+      },
+      {
+        "path": "imx415-gmsl-max96724/Transcend_GMSL_ECM400.isp",
+        "mode": "100644",
+        "git_blob": "6f618957aa4ce4c4118e313e06d08438f98ae9fd",
+        "bytes": 105440,
+        "sha256": "62ed42a4a0878bc0010f3c33227f25b5c06da247fecf5ed36849eb8e645d8a87"
+      },
+      {
+        "path": "imx415-gmsl-max96724/Transcend_GMSL_ECM400.nito",
+        "mode": "100644",
+        "git_blob": "cf71ef899774b6c02ffe1a50ffdcde0726b02ec2",
+        "bytes": 958476,
+        "sha256": "cdb3164aa4f136c115b7b6efc2ea648f19a752b2eddc62083b38935e94f20a2d"
+      },
+      {
+        "path": "imx415-gmsl-max96724/build_output/ECM400_MAX96724.ko",
+        "mode": "100644",
+        "git_blob": "bd598fecf2326b75162ad09039ee6db3ece4e661",
+        "bytes": 99016,
+        "sha256": "12857d39eef826a39f8d6715f47d5eb70932989b66d0dcdcd2c42954dc1da5cd"
+      },
+      {
+        "path": "imx415-gmsl-max96724/build_output/MAX96717.ko",
+        "mode": "100644",
+        "git_blob": "0c87d517961572d1746c53adfbf986eaab6b6f4f",
+        "bytes": 56400,
+        "sha256": "66c35007cba92ad454561e0f50d75a44bea43c63507307e76a2e05b276fcd1cf"
+      },
+      {
+        "path": "imx415-gmsl-max96724/build_output/MAX96724.ko",
+        "mode": "100644",
+        "git_blob": "7f789f12c71039a385298b23dd62b98285036d6a",
+        "bytes": 59672,
+        "sha256": "def374f1a11449276b9eed3fb5b695051ca19903b5f661d8cc809b0c29fc5eac"
+      },
+      {
+        "path": "imx415-gmsl-max96724/build_output/Transcend_GMSL_ECM400.isp",
+        "mode": "100644",
+        "git_blob": "6f618957aa4ce4c4118e313e06d08438f98ae9fd",
+        "bytes": 105440,
+        "sha256": "62ed42a4a0878bc0010f3c33227f25b5c06da247fecf5ed36849eb8e645d8a87"
+      },
+      {
+        "path": "imx415-gmsl-max96724/build_output/Transcend_GMSL_ECM400.nito",
+        "mode": "100644",
+        "git_blob": "8c020d50398f82179b1fe7c4bea46fd31a8d1105",
+        "bytes": 958476,
+        "sha256": "b8a48ed05c9dfe026c1d6c4e19fbbd74fda2e1ede1f83e1777ed0070cc7babe9"
+      },
+      {
+        "path": "imx415-gmsl-max96724/build_output/tegra234-p3767-camera-p3768-ECM400_MAX96724.dtbo",
+        "mode": "100644",
+        "git_blob": "4f14745d6abb728674a69aee9c9c8324e24b321f",
+        "bytes": 9673,
+        "sha256": "87d66f1d7046edcba6fbc0b4bc20f961d13121b8c4521f6db9d2e5454e362fa1"
+      },
+      {
+        "path": "imx415-gmsl-max96724/imx415.h",
+        "mode": "100644",
+        "git_blob": "a07582158e4b26049e9b126be7946be884584103",
+        "bytes": 2364,
+        "sha256": "7cead85668544c392adbe12a5852c2d044bb242567858079d24cf7b4b45fb50f"
+      },
+      {
+        "path": "imx415-gmsl-max96724/imx415_mode_tbls.h",
+        "mode": "100644",
+        "git_blob": "04c7278471399901107be6cabe59ed9fb0d59db6",
+        "bytes": 22115,
+        "sha256": "9917deefda8c0cdad9ff2789341dbcd37c48017d2effa3d63918df26310143ac"
+      },
+      {
+        "path": "imx415-gmsl-max96724/make_install.sh",
+        "mode": "100644",
+        "git_blob": "ab69977e69c0f23c13afbcd25f8e35a447126bc5",
+        "bytes": 17500,
+        "sha256": "4da8eb6d77b9a70bda0e60e5baa3dcc1117eca3cf68a7c0394d337fab9f9d2fb"
+      },
+      {
+        "path": "imx415-gmsl-max96724/max96717.h",
+        "mode": "100644",
+        "git_blob": "612a17f86e922041ee3233549fd20608fdf8225e",
+        "bytes": 2630,
+        "sha256": "14a2ac4cedd1edbce1dc2866e2d697e7f6ab1222e1dcecef02998cc16b833e61"
+      },
+      {
+        "path": "imx415-gmsl-max96724/max96724.h",
+        "mode": "100644",
+        "git_blob": "e1b11929c19552885b85dcfa1a88733b10f3de20",
+        "bytes": 4975,
+        "sha256": "24ee3da9e62ff22b58814fe16af8d2f9a6b762a3a27182e0163d44e0c7b2f36b"
+      },
+      {
+        "path": "imx415-gmsl-max96724/tegra234-p3767-camera-p3768-ECM400_MAX96724.dts",
+        "mode": "100644",
+        "git_blob": "6089831b6e6af0572c90fed692515f9e14ccd4e9",
+        "bytes": 13488,
+        "sha256": "9fa191460790b4708cf109ab93fa4ec18c0c0876a57b779d8e973a0b589d8c4f"
+      }
+    ]
+  },
+  "branch": "ECM003_7.x",
+  "artifact_delivery_mapping": [
+    {
+      "role": "sensor_ko",
+      "original_basename": "ECM400_MAX96724.ko",
+      "package_path": "artifacts/ECM400_MAX96724.ko",
+      "install_name": "ECM400_MAX96724.ko",
+      "git_path": "imx415-gmsl-max96724/build_output/ECM400_MAX96724.ko",
+      "git_blob": "bd598fecf2326b75162ad09039ee6db3ece4e661",
+      "sha256": "12857d39eef826a39f8d6715f47d5eb70932989b66d0dcdcd2c42954dc1da5cd",
+      "bytes": 99016
+    },
+    {
+      "role": "serializer_ko",
+      "original_basename": "MAX96717.ko",
+      "package_path": "artifacts/MAX96717.ko",
+      "install_name": "MAX96717.ko",
+      "git_path": "imx415-gmsl-max96724/build_output/MAX96717.ko",
+      "git_blob": "0c87d517961572d1746c53adfbf986eaab6b6f4f",
+      "sha256": "66c35007cba92ad454561e0f50d75a44bea43c63507307e76a2e05b276fcd1cf",
+      "bytes": 56400
+    },
+    {
+      "role": "deserializer_ko",
+      "original_basename": "MAX96724.ko",
+      "package_path": "artifacts/MAX96724.ko",
+      "install_name": "MAX96724.ko",
+      "git_path": "imx415-gmsl-max96724/build_output/MAX96724.ko",
+      "git_blob": "7f789f12c71039a385298b23dd62b98285036d6a",
+      "sha256": "def374f1a11449276b9eed3fb5b695051ca19903b5f661d8cc809b0c29fc5eac",
+      "bytes": 59672
+    },
+    {
+      "role": "overlay",
+      "original_basename": "tegra234-p3767-camera-p3768-ECM400_MAX96724.dtbo",
+      "package_path": "artifacts/tegra234-p3767-camera-p3768-ECM400_MAX96724.dtbo",
+      "install_name": "tegra234-p3767-camera-p3768-ECM400_MAX96724.dtbo",
+      "git_path": "imx415-gmsl-max96724/build_output/tegra234-p3767-camera-p3768-ECM400_MAX96724.dtbo",
+      "git_blob": "4f14745d6abb728674a69aee9c9c8324e24b321f",
+      "sha256": "87d66f1d7046edcba6fbc0b4bc20f961d13121b8c4521f6db9d2e5454e362fa1",
+      "bytes": 9673
+    },
+    {
+      "role": "isp",
+      "original_basename": "Transcend_GMSL_ECM400.isp",
+      "package_path": "artifacts/Transcend_GMSL_ECM400.isp",
+      "install_name": "Transcend_GMSL_ECM400.isp",
+      "git_path": "imx415-gmsl-max96724/Transcend_GMSL_ECM400.isp",
+      "git_blob": "6f618957aa4ce4c4118e313e06d08438f98ae9fd",
+      "sha256": "62ed42a4a0878bc0010f3c33227f25b5c06da247fecf5ed36849eb8e645d8a87",
+      "bytes": 105440
+    },
+    {
+      "role": "nito",
+      "original_basename": "Transcend_GMSL_ECM400.nito",
+      "package_path": "artifacts/Transcend_GMSL_ECM400.nito",
+      "install_name": "Transcend_GMSL_ECM400.nito",
+      "git_path": "imx415-gmsl-max96724/Transcend_GMSL_ECM400.nito",
+      "git_blob": "cf71ef899774b6c02ffe1a50ffdcde0726b02ec2",
+      "sha256": "cdb3164aa4f136c115b7b6efc2ea648f19a752b2eddc62083b38935e94f20a2d",
+      "bytes": 958476
+    }
+  ],
+  "ko_modinfo": {
+    "ECM400_MAX96724.ko": {
+      "license": [
+        "GPL v2"
+      ],
+      "author": [
+        "Jerry"
+      ],
+      "description": [
+        "Media Controller driver for Sony IMX415"
+      ],
+      "alias": [
+        "of:N*T*Csony,imx415_gmslC*",
+        "of:N*T*Csony,imx415_gmsl",
+        "i2c:imx415_GMSL"
+      ],
+      "depends": [
+        "tegra-camera,MAX96717,MAX96724"
+      ],
+      "name": [
+        "ECM400_MAX96724"
+      ],
+      "vermagic": [
+        "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64"
+      ]
+    },
+    "MAX96717.ko": {
+      "license": [
+        "GPL v2"
+      ],
+      "author": [
+        "Sudhir Vyas <svyas@nvidia.com>"
+      ],
+      "description": [
+        "GMSL Serializer driver max96717"
+      ],
+      "alias": [
+        "i2c:max96717",
+        "of:N*T*Cmaxim,max96717C*",
+        "of:N*T*Cmaxim,max96717"
+      ],
+      "depends": [
+        ""
+      ],
+      "name": [
+        "MAX96717"
+      ],
+      "vermagic": [
+        "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64"
+      ]
+    },
+    "MAX96724.ko": {
+      "license": [
+        "GPL v2"
+      ],
+      "author": [
+        "Sudhir Vyas <svyas@nvidia.com"
+      ],
+      "description": [
+        "Dual GMSL Deserializer driver max96724"
+      ],
+      "alias": [
+        "of:N*T*Cmaxim,max96724C*",
+        "of:N*T*Cmaxim,max96724",
+        "i2c:max96724"
+      ],
+      "depends": [
+        ""
+      ],
+      "name": [
+        "MAX96724"
+      ],
+      "vermagic": [
+        "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64"
+      ]
+    }
+  },
+  "tuning_selection": {
+    "basis": "make_install.sh lines 98-106 install ISP/NITO from SCRIPT_DIR; lines 448-471 export only KO/DTBO",
+    "copies": {
+      "isp": {
+        "selected_git_path": "imx415-gmsl-max96724/Transcend_GMSL_ECM400.isp",
+        "root": {
+          "path": "imx415-gmsl-max96724/Transcend_GMSL_ECM400.isp",
+          "mode": "100644",
+          "git_blob": "6f618957aa4ce4c4118e313e06d08438f98ae9fd",
+          "bytes": 105440,
+          "sha256": "62ed42a4a0878bc0010f3c33227f25b5c06da247fecf5ed36849eb8e645d8a87"
+        },
+        "build_output": {
+          "path": "imx415-gmsl-max96724/build_output/Transcend_GMSL_ECM400.isp",
+          "mode": "100644",
+          "git_blob": "6f618957aa4ce4c4118e313e06d08438f98ae9fd",
+          "bytes": 105440,
+          "sha256": "62ed42a4a0878bc0010f3c33227f25b5c06da247fecf5ed36849eb8e645d8a87"
+        },
+        "byte_identical": true
+      },
+      "nito": {
+        "selected_git_path": "imx415-gmsl-max96724/Transcend_GMSL_ECM400.nito",
+        "root": {
+          "path": "imx415-gmsl-max96724/Transcend_GMSL_ECM400.nito",
+          "mode": "100644",
+          "git_blob": "cf71ef899774b6c02ffe1a50ffdcde0726b02ec2",
+          "bytes": 958476,
+          "sha256": "cdb3164aa4f136c115b7b6efc2ea648f19a752b2eddc62083b38935e94f20a2d"
+        },
+        "build_output": {
+          "path": "imx415-gmsl-max96724/build_output/Transcend_GMSL_ECM400.nito",
+          "mode": "100644",
+          "git_blob": "8c020d50398f82179b1fe7c4bea46fd31a8d1105",
+          "bytes": 958476,
+          "sha256": "b8a48ed05c9dfe026c1d6c4e19fbbd74fda2e1ede1f83e1777ed0070cc7babe9"
+        },
+        "byte_identical": false
+      }
+    },
+    "rejected_build_output_nito": "Different bytes; retained in review only, not installed or declared equivalent"
+  },
+  "dtbo_root_properties": {
+    "overlay-name": "Camera IMX415-gmsl-MAX96724",
+    "jetson-header-name": "Jetson 22pin CSI Connector",
+    "compatible": [
+      "nvidia,p3768-0000+p3767-0000",
+      "nvidia,p3768-0000+p3767-0001",
+      "nvidia,p3768-0000+p3767-0003",
+      "nvidia,p3768-0000+p3767-0004",
+      "nvidia,p3768-0000+p3767-0005",
+      "nvidia,p3768-0000+p3767-0000-super",
+      "nvidia,p3768-0000+p3767-0001-super",
+      "nvidia,p3768-0000+p3767-0003-super",
+      "nvidia,p3768-0000+p3767-0004-super",
+      "nvidia,p3768-0000+p3767-0005-super"
+    ]
+  },
+  "topology": {
+    "configured_sensor_count": 1,
+    "vi_channels": 1,
+    "csi_channels": 1,
+    "module_node": "module1",
+    "sensor_i2c_address": "0x1a",
+    "serializer_i2c_address": "0x40",
+    "deserializer_i2c_address": "0x27",
+    "vc_id": 0,
+    "lanes": 4,
+    "tegra_sinterface": "serial_c",
+    "serializer_channel": "b",
+    "gmsl_link": {
+      "src-csi-port": "b",
+      "dst-csi-port": "b",
+      "serdes-csi-link": "a",
+      "csi-mode": "1x4",
+      "st-vc": 0,
+      "vc-id": 0,
+      "num-lanes": 4,
+      "streams": "raw10"
+    },
+    "badge": "Transcend_GMSL_ECM400",
+    "max_src_capacity": 4,
+    "physical_connector_and_argus_id": "NOT_VERIFIED",
+    "runtime_verified": false
+  },
+  "mode_checks": {
+    "compiled_dtbo": [
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx415_c@1a/mode0",
+        "source_id": 0,
+        "mclk_khz": "37125",
+        "num_lanes": "4",
+        "tegra_sinterface": "serial_c",
+        "phy_mode": "DPHY",
+        "discontinuous_clk": "no",
+        "dpcm_enable": "false",
+        "cil_settletime": "0",
+        "lane_polarity": "0",
+        "active_w": "3840",
+        "active_h": "2160",
+        "mode_type": "bayer",
+        "pixel_phase": "gbrg",
+        "csi_pixel_bit_depth": "10",
+        "readout_orientation": "0",
+        "line_length": "4400",
+        "inherent_gain": "1",
+        "pix_clk_hz": "600000000",
+        "gain_factor": "10",
+        "min_gain_val": "0",
+        "max_gain_val": "720",
+        "step_gain_val": "3",
+        "default_gain": "0",
+        "min_hdr_ratio": "1",
+        "max_hdr_ratio": "64",
+        "framerate_factor": "1000000",
+        "min_framerate": "30000000",
+        "max_framerate": "30000000",
+        "step_framerate": "1",
+        "default_framerate": "30000000",
+        "exposure_factor": "1000000",
+        "min_exp_time": "2",
+        "max_exp_time": "12500",
+        "step_exp_time": "1",
+        "default_exp_time": "10000",
+        "embedded_metadata_height": "0"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx415_c@1a/mode1",
+        "source_id": 1,
+        "mclk_khz": "37125",
+        "num_lanes": "4",
+        "tegra_sinterface": "serial_c",
+        "phy_mode": "DPHY",
+        "discontinuous_clk": "no",
+        "dpcm_enable": "false",
+        "cil_settletime": "0",
+        "lane_polarity": "0",
+        "active_w": "2560",
+        "active_h": "1440",
+        "mode_type": "bayer",
+        "pixel_phase": "gbrg",
+        "csi_pixel_bit_depth": "10",
+        "readout_orientation": "0",
+        "line_length": "4400",
+        "inherent_gain": "1",
+        "pix_clk_hz": "600000000",
+        "gain_factor": "10",
+        "min_gain_val": "0",
+        "max_gain_val": "720",
+        "step_gain_val": "3",
+        "default_gain": "0",
+        "min_hdr_ratio": "1",
+        "max_hdr_ratio": "64",
+        "framerate_factor": "1000000",
+        "min_framerate": "60000000",
+        "max_framerate": "60000000",
+        "step_framerate": "1",
+        "default_framerate": "60000000",
+        "exposure_factor": "1000000",
+        "min_exp_time": "2",
+        "max_exp_time": "12500",
+        "step_exp_time": "1",
+        "default_exp_time": "10000",
+        "embedded_metadata_height": "0"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx415_c@1a/mode2",
+        "source_id": 2,
+        "mclk_khz": "37125",
+        "num_lanes": "4",
+        "tegra_sinterface": "serial_c",
+        "phy_mode": "DPHY",
+        "discontinuous_clk": "no",
+        "dpcm_enable": "false",
+        "cil_settletime": "0",
+        "lane_polarity": "0",
+        "active_w": "2560",
+        "active_h": "1440",
+        "mode_type": "bayer",
+        "pixel_phase": "gbrg",
+        "csi_pixel_bit_depth": "10",
+        "readout_orientation": "0",
+        "line_length": "4400",
+        "inherent_gain": "1",
+        "pix_clk_hz": "600000000",
+        "gain_factor": "10",
+        "min_gain_val": "0",
+        "max_gain_val": "720",
+        "step_gain_val": "3",
+        "default_gain": "0",
+        "min_hdr_ratio": "1",
+        "max_hdr_ratio": "64",
+        "framerate_factor": "1000000",
+        "min_framerate": "30000000",
+        "max_framerate": "30000000",
+        "step_framerate": "1",
+        "default_framerate": "30000000",
+        "exposure_factor": "1000000",
+        "min_exp_time": "2",
+        "max_exp_time": "12500",
+        "step_exp_time": "1",
+        "default_exp_time": "10000",
+        "embedded_metadata_height": "0"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx415_c@1a/mode3",
+        "source_id": 3,
+        "mclk_khz": "37125",
+        "num_lanes": "4",
+        "tegra_sinterface": "serial_c",
+        "phy_mode": "DPHY",
+        "discontinuous_clk": "no",
+        "dpcm_enable": "false",
+        "cil_settletime": "0",
+        "lane_polarity": "0",
+        "active_w": "1920",
+        "active_h": "1080",
+        "mode_type": "bayer",
+        "pixel_phase": "gbrg",
+        "csi_pixel_bit_depth": "12",
+        "readout_orientation": "0",
+        "line_length": "5346",
+        "inherent_gain": "1",
+        "pix_clk_hz": "1000000000",
+        "gain_factor": "10",
+        "min_gain_val": "0",
+        "max_gain_val": "720",
+        "step_gain_val": "3",
+        "default_gain": "0",
+        "min_hdr_ratio": "1",
+        "max_hdr_ratio": "64",
+        "framerate_factor": "1000000",
+        "min_framerate": "90000000",
+        "max_framerate": "90000000",
+        "step_framerate": "1",
+        "default_framerate": "90000000",
+        "exposure_factor": "1000000",
+        "min_exp_time": "2",
+        "max_exp_time": "12500",
+        "step_exp_time": "1",
+        "default_exp_time": "10000",
+        "embedded_metadata_height": "0"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx415_c@1a/mode4",
+        "source_id": 4,
+        "mclk_khz": "37125",
+        "num_lanes": "4",
+        "tegra_sinterface": "serial_c",
+        "phy_mode": "DPHY",
+        "discontinuous_clk": "no",
+        "dpcm_enable": "false",
+        "cil_settletime": "0",
+        "lane_polarity": "0",
+        "active_w": "1920",
+        "active_h": "1080",
+        "mode_type": "bayer",
+        "pixel_phase": "gbrg",
+        "csi_pixel_bit_depth": "12",
+        "readout_orientation": "0",
+        "line_length": "2000",
+        "inherent_gain": "1",
+        "pix_clk_hz": "1000000000",
+        "gain_factor": "10",
+        "min_gain_val": "0",
+        "max_gain_val": "720",
+        "step_gain_val": "3",
+        "default_gain": "0",
+        "min_hdr_ratio": "1",
+        "max_hdr_ratio": "64",
+        "framerate_factor": "1000000",
+        "min_framerate": "60000000",
+        "max_framerate": "60000000",
+        "step_framerate": "1",
+        "default_framerate": "60000000",
+        "exposure_factor": "1000000",
+        "min_exp_time": "2",
+        "max_exp_time": "12500",
+        "step_exp_time": "1",
+        "default_exp_time": "10000",
+        "embedded_metadata_height": "0"
+      },
+      {
+        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx415_c@1a/mode5",
+        "source_id": 5,
+        "mclk_khz": "37125",
+        "num_lanes": "4",
+        "tegra_sinterface": "serial_c",
+        "phy_mode": "DPHY",
+        "discontinuous_clk": "no",
+        "dpcm_enable": "false",
+        "cil_settletime": "0",
+        "lane_polarity": "0",
+        "active_w": "1920",
+        "active_h": "1080",
+        "mode_type": "bayer",
+        "pixel_phase": "gbrg",
+        "csi_pixel_bit_depth": "12",
+        "readout_orientation": "0",
+        "line_length": "2000",
+        "inherent_gain": "1",
+        "pix_clk_hz": "1000000000",
+        "gain_factor": "10",
+        "min_gain_val": "0",
+        "max_gain_val": "720",
+        "step_gain_val": "3",
+        "default_gain": "0",
+        "min_hdr_ratio": "1",
+        "max_hdr_ratio": "64",
+        "framerate_factor": "1000000",
+        "min_framerate": "30000000",
+        "max_framerate": "30000000",
+        "step_framerate": "1",
+        "default_framerate": "30000000",
+        "exposure_factor": "1000000",
+        "min_exp_time": "2",
+        "max_exp_time": "12500",
+        "step_exp_time": "1",
+        "default_exp_time": "10000",
+        "embedded_metadata_height": "0"
+      }
+    ],
+    "dts_agrees": true,
+    "driver_frmfmt_agrees": true,
+    "runtime_verified": false
+  },
+  "upstream_readme_claims": {
+    "driver_version": "1.0.0",
+    "jetpack_l4t": "JetPack 7.2 / R39",
+    "status": "SOURCE_DOCUMENTATION_ONLY_NOT_TARGET_OR_BINARY_VERSION_PROOF"
+  },
+  "build_and_hardware_qualification": "NOT_VERIFIED"
+}
