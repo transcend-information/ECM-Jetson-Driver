@@ -1,0 +1,343 @@
+{
+  "schema": "ecm-upstream-receipt-v1",
+  "source_tree": {
+    "commit": "66e13ae803064226ff489a70b0a52c190f87b4af",
+    "git_tree": "ac39fbccd3cfa1fe3828ec0e3bd1a44198dfe449",
+    "files": [
+      {
+        "path": "README.md",
+        "git_blob": "4864649b833a943f5bf25bf88982ac012d3b913f",
+        "bytes": 1243,
+        "sha256": "ab5d3c82077b22ce6cf7a450ceccde9a583edf7467e0c3c538acd6ac84001e67"
+      },
+      {
+        "path": "imx675-gmsl-max96724/ECM300_MAX96724.c",
+        "git_blob": "3eaa1ba77263db122b578daea0cb4f4e3852bbf7",
+        "bytes": 39959,
+        "sha256": "06ec34b434c805fe7f4d8fc34bfe0287daa2041f2127ec80c7bff166be33ec7d"
+      },
+      {
+        "path": "imx675-gmsl-max96724/MAX96717.c",
+        "git_blob": "daa6e8cb35ecbe9da44287af123dc61e549bf568",
+        "bytes": 17419,
+        "sha256": "17f1a8242c3af28608578ec81722cb4ae00e5c1dcc38c158a73edee664d2fed5"
+      },
+      {
+        "path": "imx675-gmsl-max96724/MAX96724.c",
+        "git_blob": "2c305f9e40696df2aef872d1588b8bcb7e03a117",
+        "bytes": 26408,
+        "sha256": "10f3952d2ac7bc74046e8c54c5cb30308b294a9068105986edd35e331451de5e"
+      },
+      {
+        "path": "imx675-gmsl-max96724/Transcend_GMSL_ECM300.isp",
+        "git_blob": "9cfc216f929b8e6bf877596db072062fa57053c0",
+        "bytes": 90445,
+        "sha256": "958c36b230ab5d6a29f0a4a11524a0d7d37d8e475ff5f00686887de0ee668c3f"
+      },
+      {
+        "path": "imx675-gmsl-max96724/Transcend_GMSL_ECM300.nito",
+        "git_blob": "16db93afb7503cd593079fca1f1ec2a63fbad3f4",
+        "bytes": 958476,
+        "sha256": "eb33d16fd83dea5e9697be2a8c1fbe0998271c3a468ebb4850f8279243d6261b"
+      },
+      {
+        "path": "imx675-gmsl-max96724/build_output/ECM300_MAX96724.ko",
+        "git_blob": "8fcc24bfedd1102324b75638a844157a91ca89c7",
+        "bytes": 108768,
+        "sha256": "15004bcf49bbd3f914f777e69d3539a4d2f9f173d90d49e6d8cf0c557d9ae5e5"
+      },
+      {
+        "path": "imx675-gmsl-max96724/build_output/MAX96717.ko",
+        "git_blob": "60f36eecc5b3f95854355222a907e37410a95905",
+        "bytes": 56400,
+        "sha256": "afcb9ae9dfec333cbc3573a4ca516ef77e616218e926db7a41b5bc82abf03b58"
+      },
+      {
+        "path": "imx675-gmsl-max96724/build_output/MAX96724.ko",
+        "git_blob": "d45d064ecb0e5c2985d9afbc19feb28b4a4907a8",
+        "bytes": 59672,
+        "sha256": "53c2337b23851297a583312636c3460dc2d31dc0e8d76b1747675e6a89977faf"
+      },
+      {
+        "path": "imx675-gmsl-max96724/build_output/Transcend_GMSL_ECM300.isp",
+        "git_blob": "9cfc216f929b8e6bf877596db072062fa57053c0",
+        "bytes": 90445,
+        "sha256": "958c36b230ab5d6a29f0a4a11524a0d7d37d8e475ff5f00686887de0ee668c3f"
+      },
+      {
+        "path": "imx675-gmsl-max96724/build_output/Transcend_GMSL_ECM300.nito",
+        "git_blob": "16db93afb7503cd593079fca1f1ec2a63fbad3f4",
+        "bytes": 958476,
+        "sha256": "eb33d16fd83dea5e9697be2a8c1fbe0998271c3a468ebb4850f8279243d6261b"
+      },
+      {
+        "path": "imx675-gmsl-max96724/build_output/tegra234-p3767-camera-p3768-ECM300_MAX96724.dtbo",
+        "git_blob": "362d7dd121225866a68478ef6b333eb42befa519",
+        "bytes": 33308,
+        "sha256": "db8d7fb81c291d9b0994e8a7173f5e335237aa99a3896f26b5a287e5318cf904"
+      },
+      {
+        "path": "imx675-gmsl-max96724/imx675_4ports.h",
+        "git_blob": "bbb0b1facd1c1f5b1162694d8f06f23e73d757f0",
+        "bytes": 2378,
+        "sha256": "63bb90bc517ce19809e346ccc9c02d0e4c2ea0136772c897adf71713396ae0b3"
+      },
+      {
+        "path": "imx675-gmsl-max96724/imx675_mode_tbls_4ports.h",
+        "git_blob": "dcd762e1b76fc0cc1c9df7b7151e76f9ed5b0a4e",
+        "bytes": 14154,
+        "sha256": "029055156ec278b26e6e8a8ea886badb5f57831588d3f559e7bf6085e3561ab3"
+      },
+      {
+        "path": "imx675-gmsl-max96724/make_install.sh",
+        "git_blob": "11a890116b5acc03060075144501f377c11be96d",
+        "bytes": 17764,
+        "sha256": "0a29b421aeeca790c60b2267d8828694b6c066c4f4002d17f1f4fe3bd8b3496c"
+      },
+      {
+        "path": "imx675-gmsl-max96724/max96717.h",
+        "git_blob": "612a17f86e922041ee3233549fd20608fdf8225e",
+        "bytes": 2630,
+        "sha256": "14a2ac4cedd1edbce1dc2866e2d697e7f6ab1222e1dcecef02998cc16b833e61"
+      },
+      {
+        "path": "imx675-gmsl-max96724/max96724.h",
+        "git_blob": "e1b11929c19552885b85dcfa1a88733b10f3de20",
+        "bytes": 4975,
+        "sha256": "24ee3da9e62ff22b58814fe16af8d2f9a6b762a3a27182e0163d44e0c7b2f36b"
+      },
+      {
+        "path": "imx675-gmsl-max96724/tegra234-p3767-camera-p3768-ECM300_MAX96724.dts",
+        "git_blob": "562f4d6a6e5d6c648dbec258e0014b4928644f99",
+        "bytes": 52899,
+        "sha256": "032df11224d56ee0891342ac5a749c74966ea8aee448752853c43c48b54e3766"
+      }
+    ]
+  },
+  "source_snapshot_sha256": "b41905f3e51939e911d814b5dcc57b1d6dada308f1f463562ef04fdb19f960c4",
+  "source_snapshot_digest_recipe": "SHA256 of canonical JSON (sort_keys=true, separators comma/colon, ensure_ascii=true, no newline) of source_tree in evidence/upstream-receipt.json",
+  "artifact_origin": "Exact build_output Git blob bytes; no rebuild or upstream installer execution",
+  "shared_tuning_copies": {
+    "isp": {
+      "root_git_path": "imx675-gmsl-max96724/Transcend_GMSL_ECM300.isp",
+      "build_output_git_path": "imx675-gmsl-max96724/build_output/Transcend_GMSL_ECM300.isp",
+      "sha256": "958c36b230ab5d6a29f0a4a11524a0d7d37d8e475ff5f00686887de0ee668c3f",
+      "identical": true
+    },
+    "nito": {
+      "root_git_path": "imx675-gmsl-max96724/Transcend_GMSL_ECM300.nito",
+      "build_output_git_path": "imx675-gmsl-max96724/build_output/Transcend_GMSL_ECM300.nito",
+      "sha256": "eb33d16fd83dea5e9697be2a8c1fbe0998271c3a468ebb4850f8279243d6261b",
+      "identical": true
+    }
+  },
+  "elf_modinfo": {
+    "sensor_ko": {
+      "license": [
+        "GPL v2"
+      ],
+      "author": [
+        "Jerry"
+      ],
+      "description": [
+        "Media Controller driver for Sony IMX675"
+      ],
+      "alias": [
+        "of:N*T*Csony,imx675_gmsl_ABCDC*",
+        "of:N*T*Csony,imx675_gmsl_ABCD",
+        "i2c:imx675_gmsl"
+      ],
+      "depends": [
+        "tegra-camera,MAX96717,MAX96724"
+      ],
+      "name": [
+        "ECM300_MAX96724"
+      ],
+      "vermagic": [
+        "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64"
+      ]
+    },
+    "serializer_ko": {
+      "license": [
+        "GPL v2"
+      ],
+      "author": [
+        "Sudhir Vyas <svyas@nvidia.com>"
+      ],
+      "description": [
+        "GMSL Serializer driver max96717"
+      ],
+      "alias": [
+        "i2c:max96717",
+        "of:N*T*Cmaxim,max96717C*",
+        "of:N*T*Cmaxim,max96717"
+      ],
+      "depends": [
+        ""
+      ],
+      "name": [
+        "MAX96717"
+      ],
+      "vermagic": [
+        "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64"
+      ]
+    },
+    "deserializer_ko": {
+      "license": [
+        "GPL v2"
+      ],
+      "author": [
+        "Sudhir Vyas <svyas@nvidia.com"
+      ],
+      "description": [
+        "Dual GMSL Deserializer driver max96724"
+      ],
+      "alias": [
+        "of:N*T*Cmaxim,max96724C*",
+        "of:N*T*Cmaxim,max96724",
+        "i2c:max96724"
+      ],
+      "depends": [
+        ""
+      ],
+      "name": [
+        "MAX96724"
+      ],
+      "vermagic": [
+        "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64"
+      ]
+    }
+  },
+  "mode_evidence": {
+    "driver_frmfmt": [
+      [
+        0,
+        2592,
+        1944,
+        80
+      ],
+      [
+        1,
+        2592,
+        1944,
+        60
+      ],
+      [
+        2,
+        2592,
+        1944,
+        30
+      ],
+      [
+        3,
+        2560,
+        1440,
+        60
+      ],
+      [
+        4,
+        2560,
+        1440,
+        30
+      ],
+      [
+        5,
+        1920,
+        1080,
+        60
+      ],
+      [
+        6,
+        1920,
+        1080,
+        30
+      ]
+    ],
+    "dts_git_path": "imx675-gmsl-max96724/tegra234-p3767-camera-p3768-ECM300_MAX96724.dts",
+    "dtbo_git_path": "imx675-gmsl-max96724/build_output/tegra234-p3767-camera-p3768-ECM300_MAX96724.dtbo",
+    "matching_channel_mode_nodes": 28,
+    "channel_badges": [
+      "Transcend_GMSL_ECM300",
+      "Transcend_GMSL_ECM300",
+      "Transcend_GMSL_ECM300",
+      "Transcend_GMSL_ECM300"
+    ],
+    "mode6_fps": 30,
+    "hardware_verified": false
+  },
+  "qualification": {
+    "source_to_binary_proof": "NOT_VERIFIED",
+    "exact_build_target": "NOT_VERIFIED",
+    "target_crc_compatibility": "NOT_VERIFIED",
+    "hardware_validation": "NOT_VERIFIED"
+  },
+  "artifact_delivery_mapping": [
+    {
+      "role": "sensor_ko",
+      "package_path": "artifacts/ECM300_MAX96724.ko",
+      "original_basename": "ECM300_MAX96724.ko",
+      "upstream_git_path": "imx675-gmsl-max96724/build_output/ECM300_MAX96724.ko",
+      "git_blob": "8fcc24bfedd1102324b75638a844157a91ca89c7",
+      "bytes": 108768,
+      "sha256": "15004bcf49bbd3f914f777e69d3539a4d2f9f173d90d49e6d8cf0c557d9ae5e5",
+      "install_name": "ECM300_MAX96724.ko",
+      "identical_to_previous_payload": true
+    },
+    {
+      "role": "serializer_ko",
+      "package_path": "artifacts/MAX96717.ko",
+      "original_basename": "MAX96717.ko",
+      "upstream_git_path": "imx675-gmsl-max96724/build_output/MAX96717.ko",
+      "git_blob": "60f36eecc5b3f95854355222a907e37410a95905",
+      "bytes": 56400,
+      "sha256": "afcb9ae9dfec333cbc3573a4ca516ef77e616218e926db7a41b5bc82abf03b58",
+      "install_name": "MAX96717.ko",
+      "identical_to_previous_payload": true
+    },
+    {
+      "role": "deserializer_ko",
+      "package_path": "artifacts/MAX96724.ko",
+      "original_basename": "MAX96724.ko",
+      "upstream_git_path": "imx675-gmsl-max96724/build_output/MAX96724.ko",
+      "git_blob": "d45d064ecb0e5c2985d9afbc19feb28b4a4907a8",
+      "bytes": 59672,
+      "sha256": "53c2337b23851297a583312636c3460dc2d31dc0e8d76b1747675e6a89977faf",
+      "install_name": "MAX96724.ko",
+      "identical_to_previous_payload": true
+    },
+    {
+      "role": "overlay",
+      "package_path": "artifacts/tegra234-p3767-camera-p3768-ECM300_MAX96724.dtbo",
+      "original_basename": "tegra234-p3767-camera-p3768-ECM300_MAX96724.dtbo",
+      "upstream_git_path": "imx675-gmsl-max96724/build_output/tegra234-p3767-camera-p3768-ECM300_MAX96724.dtbo",
+      "git_blob": "362d7dd121225866a68478ef6b333eb42befa519",
+      "bytes": 33308,
+      "sha256": "db8d7fb81c291d9b0994e8a7173f5e335237aa99a3896f26b5a287e5318cf904",
+      "install_name": "tegra234-p3767-camera-p3768-ECM300_MAX96724.dtbo",
+      "identical_to_previous_payload": true
+    },
+    {
+      "role": "isp",
+      "package_path": "artifacts/Transcend_GMSL_ECM300.isp",
+      "original_basename": "Transcend_GMSL_ECM300.isp",
+      "upstream_git_path": "imx675-gmsl-max96724/build_output/Transcend_GMSL_ECM300.isp",
+      "git_blob": "9cfc216f929b8e6bf877596db072062fa57053c0",
+      "bytes": 90445,
+      "sha256": "958c36b230ab5d6a29f0a4a11524a0d7d37d8e475ff5f00686887de0ee668c3f",
+      "install_name": "Transcend_GMSL_ECM300.isp",
+      "identical_to_previous_payload": true
+    },
+    {
+      "role": "nito",
+      "package_path": "artifacts/Transcend_GMSL_ECM300.nito",
+      "original_basename": "Transcend_GMSL_ECM300.nito",
+      "upstream_git_path": "imx675-gmsl-max96724/build_output/Transcend_GMSL_ECM300.nito",
+      "git_blob": "16db93afb7503cd593079fca1f1ec2a63fbad3f4",
+      "bytes": 958476,
+      "sha256": "eb33d16fd83dea5e9697be2a8c1fbe0998271c3a468ebb4850f8279243d6261b",
+      "install_name": "Transcend_GMSL_ECM300.nito",
+      "identical_to_previous_payload": true
+    }
+  ],
+  "artifact_filename_policy": "Preserve original upstream build_output basenames and exact Git blob bytes; no custom JP7 suffix or serializer/deserializer prefix."
+}

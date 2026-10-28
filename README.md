@@ -12,14 +12,14 @@ Four JetPack 7.x packages are currently included and have passed local simulated
 
 ## Models and Packages
 
-| Model | Sensor | Connection | JetPack 6.x | JetPack 7.x |
-|---|---|---|---|---|
-| TS-ECM100M22 | GC2093 | MIPI | Pending inclusion | Included |
-| TS-ECM300M22 | IMX675 | MIPI | Pending inclusion | Included |
-| TS-ECM400M22 | IMX415 | MIPI | Pending inclusion | Included |
-| TS-ECM300G2F | IMX675 | GMSL (MAX96724) | Pending inclusion | Included |
+| Model | Sensor | Connection | JetPack 7.x |
+|---|---|---|---|
+| TS-ECM100M22 | GC2093 | MIPI | Included |
+| TS-ECM300M22 | IMX675 | MIPI | Included |
+| TS-ECM400M22 | IMX415 | MIPI | Included |
+| TS-ECM300G2F | IMX675 | GMSL (MAX96724) | Included |
 
-“Included” means the package files are present and have passed integrity checks and local simulation. It does not mean that installation or image capture has been verified on a real device. Packages marked “Pending inclusion” cannot currently be installed.
+“Included” means the package files are present and have passed integrity checks and local simulation. It does not mean that installation or image capture has been verified on a real device.
 
 Packages are organized by product family, connection, and JetPack version. GMSL packages also identify the serializer/deserializer pair. For example, ECM300 MIPI uses `packages/ecm300/mipi/jp7/`, while ECM300G2F uses `packages/ecm300/gmsl/max96717-max96724/jp7/`. Both belong to the ECM300 product family; their package identities remain separate. See the [directory guide](docs/structure.md).
 
@@ -34,11 +34,11 @@ The following specifications are declared by the included **JetPack 7.x** packag
 | TS-ECM100M22 | MIPI | 1920×1080 @ 60/30 FPS; 1280×720 @ 60/30 FPS |
 | TS-ECM300M22 | MIPI | 2592×1944 @ 80/60/30 FPS; 2560×1440 @ 60/30 FPS; 1920×1080 @ 60/30 FPS |
 | TS-ECM400M22 | MIPI | 3840×2160 @ 60/30 FPS; 2560×1440 @ 60/30 FPS; 1920×1080 @ 90/60/30 FPS |
-| TS-ECM300G2F | GMSL (MAX96724) | 2560×1440, 1920×1080, 1600×900, and 1280×720, all at 30 FPS |
+| TS-ECM300G2F | GMSL (MAX96724) | 2592×1944 @ 80/60/30 FPS; 2560×1440 @ 60/30 FPS; 1920×1080 @ 60/30 FPS |
 
-The GMSL specifications apply to each camera channel. Simultaneous capture across multiple channels will continue to be validated. Drivers, mode numbers, and capture processing must be checked against the corresponding package for each JetPack version.
+The GMSL package is fixed to upstream commit `66e13ae803064226ff489a70b0a52c190f87b4af`. Channels A/B/C/D each declare the same seven Linear modes and share one ISP/NITO pair. Mode6 is 1920×1080 at **30 FPS**, as declared by the effective driver mode table, DTS values, and compiled DTBO; the upstream README incorrectly lists 60 FPS. These static checks do not prove source-to-binary build provenance or hardware performance. Simultaneous multi-channel capture still requires validation.
 
-The target output specifications for the local JP6 MIPI versions have been documented, but their binaries are not yet included in this installer. ECM400 JP6 still uses downstream cropping, so its sensor receiver dimensions must not be confused with the output specifications above. See the [resolution and mode reference](docs/resolutions.md). This package does not include preview code that performs capture or cropping.
+See the [JetPack 7.x resolution and mode reference](docs/resolutions.md). This package does not include preview code that performs capture or cropping.
 
 ## Requirements and Startup
 
@@ -98,4 +98,4 @@ Installation logs are stored in `<workspace>/logs/external/`, and exported summa
 
 See the [directory guide](docs/structure.md) for the purpose of each folder.
 
-See the [CHANGELOG](CHANGELOG.md) for version changes. The [notice](NOTICE.md), [draft company license framework](LICENSE.draft.md), and [third-party notices](THIRD_PARTY_NOTICES.md) are for internal review. Final terms and external distribution remain subject to company approval.
+See the [CHANGELOG](CHANGELOG.md) for version changes. Final terms and external distribution remain subject to company approval.

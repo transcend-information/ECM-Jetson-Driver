@@ -39,7 +39,7 @@
     "ecm300-gmsl-max96724-jp7": {
       "status": "FIXED_ARTIFACTS_RECEIVED",
       "manifest": "packages/ecm300/gmsl/max96717-max96724/jp7/manifest.json",
-      "manifest_sha256": "99a5d87b7b55eacfba6843e51cafb553f6dc5474327680a6820722d30114599c",
+      "manifest_sha256": "9e50d41b53cf790d3285e0f52f2c0e70ab49abff0c81bcbf850544afc6e44439",
       "qualification": "LOCAL_UPSTREAM_BINARY_CANDIDATE_NOT_RELEASE_APPROVED"
     }
   }

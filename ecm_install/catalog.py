@@ -17,9 +17,8 @@ for family in ('6', '7'):
     if family == '6':
         roles['isp'] = 'isp'
     else:
-        for port in 'ABCD':
-            roles['isp_' + port] = 'isp'
-            roles['nito_' + port] = 'nito'
+        roles['isp'] = 'isp'
+        roles['nito'] = 'nito'
     PACKAGES[key] = dict(id=key, product='ECM300G2F', sensor='IMX675', connection='GMSL',
                          jetpack=family, port='A-D', serdes='MAX96717/MAX96724', roles=roles, status=AWAITING)
 
