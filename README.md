@@ -44,7 +44,7 @@ See the [JetPack 7.x resolution and mode reference](docs/resolutions.md). This p
 
 ### Requirements
 
-- A Linux/AArch64 environment on NVIDIA Jetson.
+- NVIDIA Jetson Orin Nano / Orin NX running Linux on AArch64.
 - Bash and Python 3.10 or later. The program uses the Python standard library.
 - The complete installer directory, including the program, package index, and binaries under `packages/`.
 - A writable workspace for installation logs, backups, and reports.
