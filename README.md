@@ -16,8 +16,10 @@ Four JetPack 7.x packages are currently included and have passed local simulated
 |---|---|---|---|
 | TS-ECM100M22 | GC2093 | MIPI | Included |
 | TS-ECM300M22 | IMX675 | MIPI | Included |
-| TS-ECM300G2F | IMX675 | GMSL (MAX96724) | Included |
+| TS-ECM300G2F<br>TS-ECM301G2F | IMX675 | GMSL (MAX96724) | Included |
 | TS-ECM400G2F | IMX415 | GMSL (MAX96724) | Included |
+
+TS-ECM301G2F is the enclosed variant of TS-ECM300G2F and uses the same corresponding package.
 
 “Included” means the package files are present and have passed integrity checks and local simulation. It does not mean that installation or image capture has been verified on a real device.
 
@@ -33,7 +35,7 @@ The following specifications are declared by the included **JetPack 7.x** packag
 |---|---|---|
 | TS-ECM100M22 | MIPI | 1920×1080 @ 60/30 FPS<br>1280×720 @ 60/30 FPS |
 | TS-ECM300M22 | MIPI | 2592×1944 @ 80/60/30 FPS<br>2560×1440 @ 60/30 FPS<br>1920×1080 @ 60/30 FPS |
-| TS-ECM300G2F | GMSL (MAX96724) | 2592×1944 @ 80/60/30 FPS<br>2560×1440 @ 60/30 FPS<br>1920×1080 @ 60/30 FPS |
+| TS-ECM300G2F<br>TS-ECM301G2F | GMSL (MAX96724) | 2592×1944 @ 80/60/30 FPS<br>2560×1440 @ 60/30 FPS<br>1920×1080 @ 60/30 FPS |
 | TS-ECM400G2F | GMSL (MAX96724) | 3840×2160 @ 30 FPS<br>2560×1440 @ 60/30 FPS<br>1920×1080 @ 90/60/30 FPS |
 
 The ECM300G2F GMSL package is fixed to upstream commit `66e13ae803064226ff489a70b0a52c190f87b4af`. Channels A/B/C/D each declare the same seven Linear modes and share one ISP/NITO pair. Mode6 is 1920×1080 at **30 FPS**, as declared by the effective driver mode table, DTS values, and compiled DTBO; the upstream README incorrectly lists 60 FPS. These static checks do not prove source-to-binary build provenance or hardware performance. Simultaneous multi-channel capture still requires validation.

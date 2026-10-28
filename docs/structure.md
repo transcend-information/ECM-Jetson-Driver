@@ -51,10 +51,10 @@ MIPI packages use `packages/<family>/mipi/<jetpack>/`. GMSL packages use `packag
 |---|---|---|
 | ECM100 | MIPI | [ecm100/mipi/jp7/](../packages/ecm100/mipi/jp7/) |
 | ECM300 | MIPI | [ecm300/mipi/jp7/](../packages/ecm300/mipi/jp7/) |
-| ECM300G2F | GMSL, MAX96717/MAX96724 | [ecm300/gmsl/max96717-max96724/jp7/](../packages/ecm300/gmsl/max96717-max96724/jp7/) |
+| ECM300G2F / ECM301G2F | GMSL, MAX96717/MAX96724 | [ecm300/gmsl/max96717-max96724/jp7/](../packages/ecm300/gmsl/max96717-max96724/jp7/) |
 | ECM400G2F | GMSL, MAX96717/MAX96724 | [ecm400/gmsl/max96717-max96724/jp7/](../packages/ecm400/gmsl/max96717-max96724/jp7/) |
 
-The `ecm300/` directory groups the product family. The GMSL product remains **ECM300G2F** in its manifest, menus, and logs; it is not interchangeable with the ECM300 MIPI package.
+The `ecm300/` directory groups the product family. The GMSL product remains **ECM300G2F** in its manifest and logs; the menu displays **ECM300G2F / ECM301G2F** for the shared package. It is not interchangeable with the ECM300 MIPI package.
 
 Each JetPack package directory contains:
 

@@ -4,6 +4,10 @@ This file tracks installer versions. Driver and DTBO versions are recorded separ
 
 ## Unreleased
 
+### ECM301G2F display alias
+
+- Show ECM301G2F, the enclosed ECM300G2F variant, alongside ECM300G2F in the README and installer entry; retain the existing package identities, artifacts, and validation status.
+
 ### ECM400G2F replaces the public ECM400 MIPI JP7 package
 
 - Replace the ECM400 MIPI JP7 catalog entry with TS-ECM400G2F / GMSL (MAX96724), using six original artifacts from `f987e61f1880d4bcf33033235d4d692e210c00ef` without rebuilding or renaming them.

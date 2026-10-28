@@ -11,13 +11,13 @@ The following table lists the modes, resolutions, and FPS settings declared by t
 | TS-ECM300M22 | MIPI | 0/1/2 | 2592×1944 | 80/60/30 |
 | TS-ECM300M22 | MIPI | 3/4 | 2560×1440 | 60/30 |
 | TS-ECM300M22 | MIPI | 5/6 | 1920×1080 | 60/30 |
-| TS-ECM300G2F | GMSL (MAX96724) | 0 | 2592×1944 | 80 |
-| TS-ECM300G2F | GMSL (MAX96724) | 1 | 2592×1944 | 60 |
-| TS-ECM300G2F | GMSL (MAX96724) | 2 | 2592×1944 | 30 |
-| TS-ECM300G2F | GMSL (MAX96724) | 3 | 2560×1440 | 60 |
-| TS-ECM300G2F | GMSL (MAX96724) | 4 | 2560×1440 | 30 |
-| TS-ECM300G2F | GMSL (MAX96724) | 5 | 1920×1080 | 60 |
-| TS-ECM300G2F | GMSL (MAX96724) | 6 | 1920×1080 | 30 |
+| TS-ECM300G2F<br>TS-ECM301G2F | GMSL (MAX96724) | 0 | 2592×1944 | 80 |
+| TS-ECM300G2F<br>TS-ECM301G2F | GMSL (MAX96724) | 1 | 2592×1944 | 60 |
+| TS-ECM300G2F<br>TS-ECM301G2F | GMSL (MAX96724) | 2 | 2592×1944 | 30 |
+| TS-ECM300G2F<br>TS-ECM301G2F | GMSL (MAX96724) | 3 | 2560×1440 | 60 |
+| TS-ECM300G2F<br>TS-ECM301G2F | GMSL (MAX96724) | 4 | 2560×1440 | 30 |
+| TS-ECM300G2F<br>TS-ECM301G2F | GMSL (MAX96724) | 5 | 1920×1080 | 60 |
+| TS-ECM300G2F<br>TS-ECM301G2F | GMSL (MAX96724) | 6 | 1920×1080 | 30 |
 | TS-ECM400G2F | GMSL (MAX96724) | 0 | 3840×2160 | 30 |
 | TS-ECM400G2F | GMSL (MAX96724) | 1 | 2560×1440 | 60 |
 | TS-ECM400G2F | GMSL (MAX96724) | 2 | 2560×1440 | 30 |
@@ -26,6 +26,8 @@ The following table lists the modes, resolutions, and FPS settings declared by t
 | TS-ECM400G2F | GMSL (MAX96724) | 5 | 1920×1080 | 30 |
 
 Mode and FPS values correspond in the listed order. For example, `0/1` and `60/30` mean mode0 is 60 FPS and mode1 is 30 FPS.
+
+ECM301G2F is the enclosed variant of ECM300G2F and shares the ECM300G2F package and mode specifications listed here.
 
 ECM300G2F uses the MAX96717/MAX96724 GMSL package. Channels A/B/C/D share the same seven modes; simultaneous multi-channel capture still requires hardware validation.
 

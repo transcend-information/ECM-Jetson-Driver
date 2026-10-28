@@ -42,7 +42,7 @@ def select_package(host, catalog):
         for index, key in enumerate(keys, 1):
             item = PACKAGES[key]
             status = 'Received' if catalog.manifest(key) is not None else 'Awaiting artifacts'
-            ui.line('[' + str(index) + '] ' + item['product'] + ' / ' + item['sensor'] + ' / ' + item['connection'] + ' / ' + item['port'] + (' / ' + item['serdes'] if 'serdes' in item else '') + ' | ' + status)
+            ui.line('[' + str(index) + '] ' + item.get('display_name', item['product']) + ' / ' + item['sensor'] + ' / ' + item['connection'] + ' / ' + item['port'] + (' / ' + item['serdes'] if 'serdes' in item else '') + ' | ' + status)
         ui.footer('[9] Change JetPack family', '[B] Back')
         value = ask('Select: ')
         if value.upper() == 'B':
@@ -64,7 +64,7 @@ def installation(engine, catalog):
         record = catalog.manifest(key)
         item = PACKAGES[key]
         ui.begin('Home > Install / Switch Camera > Confirm installation', VERSION)
-        ui.line('Install Target    : ' + item['product'] + ' / ' + item['connection'] + ' / JP' + item['jetpack'] + ' / ' + item['port'])
+        ui.line('Install Target    : ' + item.get('display_name', item['product']) + ' / ' + item['connection'] + ' / JP' + item['jetpack'] + ' / ' + item['port'])
         ui.line('Current System    : ' + str(host.get('l4t')) + ' / Kernel ' + str(host.get('kernel')))
         if record is None:
             ui.line('Package Status    : Awaiting artifacts')

@@ -22,6 +22,7 @@ for family in ('6', '7'):
         roles['isp'] = 'isp'
         roles['nito'] = 'nito'
     PACKAGES[key] = dict(id=key, product='ECM300G2F', sensor='IMX675', connection='GMSL',
+                         display_name='ECM300G2F / ECM301G2F',
                          jetpack=family, port='A-D', serdes='MAX96717/MAX96724', roles=roles, status=AWAITING)
     if family == '7':
         key = 'ecm400-gmsl-max96724-jp7'
