@@ -2,7 +2,7 @@
 
 The JetPack 6 and JetPack 7 packages declare the same modes for each camera configuration below. The table lists the resolution and maximum frame rate for each mode in the packaged device-tree overlay. Actual frame rates depend on the running system.
 
-The GMSL rows apply to both the MAX96724 and MAX9296 deserializers. For each model, the two packages declare the same modes. Their channel configurations are listed in the [package table](../README.md).
+The GMSL rows apply to both the MAX96724 and MAX9296 deserializers. For each model, the two packages declare the same modes. See the [package table](../README.md) for the JetPack 6 and JetPack 7 package IDs.
 
 | Camera and connection | Mode IDs | Resolution | Maximum FPS, in mode order |
 | --- | --- | --- | --- |
