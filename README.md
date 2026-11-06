@@ -15,6 +15,21 @@ These 12 packages cover six configurations on each JetPack version. The GMSL rou
 
 The JP6 artifacts target kernel `5.15.148-tegra` and the JP7 artifacts target `6.8.12-1021-tegra`. Review the detected host and declared package target on the confirmation screen. Each manifest records the target fields available for that package.
 
+## Resolutions and FPS
+
+The JetPack 6 and JetPack 7 packages declare the same Linear modes for each configuration below. Each FPS value is the maximum for one mode. Actual frame rates depend on the running system.
+
+| Model | Connection | Resolutions and FPS |
+| --- | --- | --- |
+| TS-ECM100M22 | MIPI | 1920×1080 @ 60/30 FPS<br>1280×720 @ 60/30 FPS |
+| TS-ECM300M22 | MIPI | 2592×1944 @ 80/60/30 FPS<br>2560×1440 @ 60/30 FPS<br>1920×1080 @ 60/30 FPS |
+| TS-ECM300G2F<br>TS-ECM301G2F | GMSL (MAX96724) | 2592×1944 @ 80/60/30 FPS<br>2560×1440 @ 60/30 FPS<br>1920×1080 @ 60/30 FPS |
+| TS-ECM300G2F<br>TS-ECM301G2F | GMSL (MAX9296) | 2592×1944 @ 80/60/30 FPS<br>2560×1440 @ 60/30 FPS<br>1920×1080 @ 60/30 FPS |
+| TS-ECM400G2F | GMSL (MAX96724) | 3840×2160 @ 30 FPS<br>2560×1440 @ 60/30 FPS<br>1920×1080 @ 90/60/30 FPS |
+| TS-ECM400G2F | GMSL (MAX9296) | 3840×2160 @ 30 FPS<br>2560×1440 @ 60/30 FPS<br>1920×1080 @ 90/60/30 FPS |
+
+See the [resolution and mode reference](docs/resolutions.md) for the mode ID of each resolution and frame rate.
+
 ## Start the Manager for the first time
 
 **1. Extract the archive.** On your Jetson, right-click the downloaded `.tar.gz` file and choose **Extract Here**.
