@@ -1,41 +1,27 @@
-"""Eight product contracts. Names and artifacts arrive through approved manifests."""
+"""Product contracts bound to the release index. Names and artifacts arrive through approved manifests."""
 from pathlib import Path
 import json
 
-AWAITING = 'AWAITING_INTERNAL_FIXED_SOURCE_AND_ARTIFACT_HANDOFF'
+AWAITING = 'AWAITING_ARTIFACTS'
 PACKAGES = {}
 for family in ('6', '7'):
-    for product, sensor in (('ECM100', 'GC2093'), ('ECM300', 'IMX675'), ('ECM400', 'IMX415')):
-        if family == '7' and product == 'ECM400':
-            continue
+    for product, sensor, connection, port in (
+        ('ECM100', 'GC2093', 'MIPI', 'CAM1'),
+        ('ECM300', 'IMX675', 'MIPI', 'CAM1'),
+        ('ECM300', 'IMX675', 'GMSL', 'A-D'),
+        ('ECM400', 'IMX415', 'GMSL', 'Single channel / VC0'),
+    ):
+        roles = {'sensor_ko': 'ko', 'overlay': 'dtbo', 'isp': 'isp'}
         key = product.lower() + '-mipi-jp' + family
-        roles = {'sensor_ko':'ko', 'overlay':'dtbo', 'isp':'isp'}
+        item = dict(product=product, sensor=sensor, connection=connection, port=port,
+                    jetpack=family, roles=roles)
+        if connection == 'GMSL':
+            key = product.lower() + '-gmsl-max96724-jp' + family
+            item.update(product=product+'G2F', serdes='MAX96717/MAX96724')
+            roles.update(serializer_ko='ko', deserializer_ko='ko')
         if family == '7':
             roles['nito'] = 'nito'
-        PACKAGES[key] = dict(id=key, product=product, sensor=sensor, connection='MIPI',
-                             jetpack=family, port='CAM1', roles=roles, status=AWAITING)
-    key = 'ecm300-gmsl-max96724-jp' + family
-    roles = {'sensor_ko':'ko', 'serializer_ko':'ko', 'deserializer_ko':'ko', 'overlay':'dtbo'}
-    if family == '6':
-        roles['isp'] = 'isp'
-    else:
-        roles['isp'] = 'isp'
-        roles['nito'] = 'nito'
-    PACKAGES[key] = dict(id=key, product='ECM300G2F', sensor='IMX675', connection='GMSL',
-                         display_name='ECM300G2F / ECM301G2F',
-                         jetpack=family, port='A-D', serdes='MAX96717/MAX96724', roles=roles, status=AWAITING)
-    if family == '7':
-        key = 'ecm400-gmsl-max96724-jp7'
-        PACKAGES[key] = dict(id=key, product='ECM400G2F', sensor='IMX415', connection='GMSL',
-                             jetpack=family, port='Single channel / VC0', serdes='MAX96717/MAX96724',
-                             roles=dict(roles), status=AWAITING)
-
-
-# Keep the old JP6 identity for internal/history use, outside new public installs.
-PACKAGES['ecm400-mipi-jp6']['legacy_only'] = True
-PUBLIC_PACKAGES = {key: item for key, item in PACKAGES.items() if not item.get('legacy_only', False)}
-
-
+        PACKAGES[key] = dict(item, id=key)
 
 class Catalog:
     def __init__(self, package_root):
@@ -46,7 +32,9 @@ class Catalog:
             raise ValueError('Unsupported release index schema')
         self.records = index['packages']
         if set(self.records) != set(PACKAGES):
-            raise ValueError('Release index must describe exactly eight packages')
+            raise ValueError('Release index package IDs must match the catalog')
+    def selectable_packages(self):
+        return dict(PACKAGES)
 
     def manifest(self, package_id):
         record = self.records[package_id]

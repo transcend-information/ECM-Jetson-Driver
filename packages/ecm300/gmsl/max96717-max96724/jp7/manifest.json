@@ -1,23 +1,14 @@
 {
-  "schema": "ecm-prebuilt-received-v1",
-  "audience": "LOCAL_UPSTREAM_BINARY_CANDIDATE",
   "package_id": "ecm300-gmsl-max96724-jp7",
   "product": "ECM300G2F",
   "sensor": "IMX675",
   "connection": "GMSL",
   "jetpack": "7",
-  "artifact_set_id": "ecm300-gmsl-max96724-jp7-66e13ae80306-upstream-review",
+  "artifact_set_id": "ecm300-gmsl-max96724-jp7-f2611a3b662c-latest-20261029-r1",
   "driver_version": null,
   "overlay_version": null,
   "release_approved": false,
   "runtime_verified": false,
-  "source": {
-    "commit": "66e13ae803064226ff489a70b0a52c190f87b4af",
-    "snapshot_sha256": "b41905f3e51939e911d814b5dcc57b1d6dada308f1f463562ef04fdb19f960c4",
-    "snapshot_kind": "REVIEWED_GIT_TREE",
-    "co_located_in_commit": true,
-    "snapshot_digest_recipe": "SHA256 of canonical JSON (sort_keys=true, separators comma/colon, ensure_ascii=true, no newline) of source_tree in evidence/upstream-receipt.json"
-  },
   "target": {
     "kernel": "6.8.12-1021-tegra",
     "arch": "aarch64",
@@ -25,452 +16,83 @@
     "board": null,
     "abi_reference": null
   },
-  "target_observations": {
-    "kernel_basis": "ELF .modinfo vermagic",
-    "arch_basis": "ELF header",
-    "dtbo_declared_compatible": [
-      "nvidia,p3768-0000+p3767-0000",
-      "nvidia,p3768-0000+p3767-0001",
-      "nvidia,p3768-0000+p3767-0003",
-      "nvidia,p3768-0000+p3767-0004",
-      "nvidia,p3768-0000+p3767-0005",
-      "nvidia,p3768-0000+p3767-0000-super",
-      "nvidia,p3768-0000+p3767-0001-super",
-      "nvidia,p3768-0000+p3767-0003-super",
-      "nvidia,p3768-0000+p3767-0004-super",
-      "nvidia,p3768-0000+p3767-0005-super"
-    ],
-    "board_qualification": "NOT_VERIFIED",
-    "compiler_comment_strings": [
-      "GCC: (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
-    ]
-  },
-  "build_evidence": {
-    "source_to_binary_proof": "NOT_VERIFIED",
-    "exact_build_target": "NOT_VERIFIED",
-    "target_crc_compatibility": "NOT_VERIFIED",
-    "hardware_validation": "NOT_VERIFIED"
-  },
-  "reception": {
-    "receipt": "evidence/upstream-receipt.json",
-    "receipt_sha256": "b36454908e9ee96381103ceee4cb454852aa3f77a313411142eddf755595192b",
-    "scope": "Fixed upstream bytes received for local candidate integration; no native or release approval"
-  },
+  "system_module_dependencies": [
+    "tegra-camera"
+  ],
   "mode_metadata": {
-    "schema_id": "ecm300-gmsl-max96724-jp7-66e13ae80306-db8d7fb81c29",
-    "metadata_only": true,
-    "parsed_dts_agrees_with_dtbo": true,
-    "driver_frmfmt_agrees_with_dtbo": true,
-    "runtime_verified": false,
-    "modes": [
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_A@30/mode0",
-        "num_lanes": "4",
-        "active_w": "2592",
-        "active_h": "1944",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "80000000",
-        "default_framerate": "80000000",
-        "source_id": 0
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_A@30/mode1",
-        "num_lanes": "4",
-        "active_w": "2592",
-        "active_h": "1944",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "60000000",
-        "default_framerate": "60000000",
-        "source_id": 1
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_A@30/mode2",
-        "num_lanes": "4",
-        "active_w": "2592",
-        "active_h": "1944",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "30000000",
-        "default_framerate": "30000000",
-        "source_id": 2
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_A@30/mode3",
-        "num_lanes": "4",
-        "active_w": "2560",
-        "active_h": "1440",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "60000000",
-        "default_framerate": "60000000",
-        "source_id": 3
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_A@30/mode4",
-        "num_lanes": "4",
-        "active_w": "2560",
-        "active_h": "1440",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "30000000",
-        "default_framerate": "30000000",
-        "source_id": 4
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_A@30/mode5",
-        "num_lanes": "4",
-        "active_w": "1920",
-        "active_h": "1080",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "60000000",
-        "default_framerate": "60000000",
-        "source_id": 5
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_A@30/mode6",
-        "num_lanes": "4",
-        "active_w": "1920",
-        "active_h": "1080",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "30000000",
-        "default_framerate": "30000000",
-        "source_id": 6
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_B@31/mode0",
-        "num_lanes": "4",
-        "active_w": "2592",
-        "active_h": "1944",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "80000000",
-        "default_framerate": "80000000",
-        "source_id": 0
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_B@31/mode1",
-        "num_lanes": "4",
-        "active_w": "2592",
-        "active_h": "1944",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "60000000",
-        "default_framerate": "60000000",
-        "source_id": 1
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_B@31/mode2",
-        "num_lanes": "4",
-        "active_w": "2592",
-        "active_h": "1944",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "30000000",
-        "default_framerate": "30000000",
-        "source_id": 2
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_B@31/mode3",
-        "num_lanes": "4",
-        "active_w": "2560",
-        "active_h": "1440",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "60000000",
-        "default_framerate": "60000000",
-        "source_id": 3
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_B@31/mode4",
-        "num_lanes": "4",
-        "active_w": "2560",
-        "active_h": "1440",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "30000000",
-        "default_framerate": "30000000",
-        "source_id": 4
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_B@31/mode5",
-        "num_lanes": "4",
-        "active_w": "1920",
-        "active_h": "1080",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "60000000",
-        "default_framerate": "60000000",
-        "source_id": 5
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_B@31/mode6",
-        "num_lanes": "4",
-        "active_w": "1920",
-        "active_h": "1080",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "30000000",
-        "default_framerate": "30000000",
-        "source_id": 6
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_C@32/mode0",
-        "num_lanes": "4",
-        "active_w": "2592",
-        "active_h": "1944",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "80000000",
-        "default_framerate": "80000000",
-        "source_id": 0
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_C@32/mode1",
-        "num_lanes": "4",
-        "active_w": "2592",
-        "active_h": "1944",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "60000000",
-        "default_framerate": "60000000",
-        "source_id": 1
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_C@32/mode2",
-        "num_lanes": "4",
-        "active_w": "2592",
-        "active_h": "1944",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "30000000",
-        "default_framerate": "30000000",
-        "source_id": 2
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_C@32/mode3",
-        "num_lanes": "4",
-        "active_w": "2560",
-        "active_h": "1440",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "60000000",
-        "default_framerate": "60000000",
-        "source_id": 3
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_C@32/mode4",
-        "num_lanes": "4",
-        "active_w": "2560",
-        "active_h": "1440",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "30000000",
-        "default_framerate": "30000000",
-        "source_id": 4
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_C@32/mode5",
-        "num_lanes": "4",
-        "active_w": "1920",
-        "active_h": "1080",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "60000000",
-        "default_framerate": "60000000",
-        "source_id": 5
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_C@32/mode6",
-        "num_lanes": "4",
-        "active_w": "1920",
-        "active_h": "1080",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "30000000",
-        "default_framerate": "30000000",
-        "source_id": 6
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_D@22/mode0",
-        "num_lanes": "4",
-        "active_w": "2592",
-        "active_h": "1944",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "80000000",
-        "default_framerate": "80000000",
-        "source_id": 0
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_D@22/mode1",
-        "num_lanes": "4",
-        "active_w": "2592",
-        "active_h": "1944",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "60000000",
-        "default_framerate": "60000000",
-        "source_id": 1
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_D@22/mode2",
-        "num_lanes": "4",
-        "active_w": "2592",
-        "active_h": "1944",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "30000000",
-        "default_framerate": "30000000",
-        "source_id": 2
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_D@22/mode3",
-        "num_lanes": "4",
-        "active_w": "2560",
-        "active_h": "1440",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "60000000",
-        "default_framerate": "60000000",
-        "source_id": 3
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_D@22/mode4",
-        "num_lanes": "4",
-        "active_w": "2560",
-        "active_h": "1440",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "30000000",
-        "default_framerate": "30000000",
-        "source_id": 4
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_D@22/mode5",
-        "num_lanes": "4",
-        "active_w": "1920",
-        "active_h": "1080",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "60000000",
-        "default_framerate": "60000000",
-        "source_id": 5
-      },
-      {
-        "path": "/fragment@0/__overlay__/bus@0/cam_i2cmux/i2c@1/rbpcv3_imx675_c_D@22/mode6",
-        "num_lanes": "4",
-        "active_w": "1920",
-        "active_h": "1080",
-        "mode_type": "bayer",
-        "framerate_factor": "1000000",
-        "max_framerate": "30000000",
-        "default_framerate": "30000000",
-        "source_id": 6
-      }
-    ],
-    "documentation_discrepancy": "Upstream README lists mode6 as 60 FPS; effective driver frmfmt, DTS values and all four compiled DTBO channels declare 1920x1080 at 30 FPS. Use 30 FPS.",
-    "channel_badges": [
-      "Transcend_GMSL_ECM300",
-      "Transcend_GMSL_ECM300",
-      "Transcend_GMSL_ECM300",
-      "Transcend_GMSL_ECM300"
+    "max_resolution": [
+      2592,
+      1944
     ]
   },
+  "serdes": "MAX96717/MAX96724",
+  "port": "A-D",
+  "schema": "ecm-public-prebuilt-v1",
+  "audience": "PUBLIC_DISTRIBUTION_CANDIDATE",
   "artifacts": {
     "sensor_ko": {
-      "kind": "ko",
       "path": "artifacts/ECM300_MAX96724.ko",
-      "install_name": "ECM300_MAX96724.ko",
       "bytes": 108768,
-      "sha256": "15004bcf49bbd3f914f777e69d3539a4d2f9f173d90d49e6d8cf0c557d9ae5e5",
-      "upstream": {
-        "commit": "66e13ae803064226ff489a70b0a52c190f87b4af",
-        "git_path": "imx675-gmsl-max96724/build_output/ECM300_MAX96724.ko",
-        "git_blob": "8fcc24bfedd1102324b75638a844157a91ca89c7"
-      },
+      "sha256": "69e2ea5d1172ca37fb56b0c0a80c20a9d8dfd0c500bc33fea794ab7f4d362c97",
+      "kind": "ko",
+      "install_name": "ECM300_MAX96724.ko",
       "module_name": "ECM300_MAX96724",
-      "vermagic": "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64",
+      "module_version": null,
       "depends": [
         "tegra-camera",
         "MAX96717",
         "MAX96724"
       ],
-      "module_version": null
+      "vermagic": "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64",
+      "embedded_identity": {}
     },
     "serializer_ko": {
-      "kind": "ko",
       "path": "artifacts/MAX96717.ko",
-      "install_name": "MAX96717.ko",
       "bytes": 56400,
       "sha256": "afcb9ae9dfec333cbc3573a4ca516ef77e616218e926db7a41b5bc82abf03b58",
-      "upstream": {
-        "commit": "66e13ae803064226ff489a70b0a52c190f87b4af",
-        "git_path": "imx675-gmsl-max96724/build_output/MAX96717.ko",
-        "git_blob": "60f36eecc5b3f95854355222a907e37410a95905"
-      },
+      "kind": "ko",
+      "install_name": "MAX96717.ko",
       "module_name": "MAX96717",
-      "vermagic": "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64",
+      "module_version": null,
       "depends": [],
-      "module_version": null
+      "vermagic": "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64",
+      "embedded_identity": {}
     },
     "deserializer_ko": {
-      "kind": "ko",
       "path": "artifacts/MAX96724.ko",
-      "install_name": "MAX96724.ko",
       "bytes": 59672,
       "sha256": "53c2337b23851297a583312636c3460dc2d31dc0e8d76b1747675e6a89977faf",
-      "upstream": {
-        "commit": "66e13ae803064226ff489a70b0a52c190f87b4af",
-        "git_path": "imx675-gmsl-max96724/build_output/MAX96724.ko",
-        "git_blob": "d45d064ecb0e5c2985d9afbc19feb28b4a4907a8"
-      },
+      "kind": "ko",
+      "install_name": "MAX96724.ko",
       "module_name": "MAX96724",
-      "vermagic": "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64",
+      "module_version": null,
       "depends": [],
-      "module_version": null
+      "vermagic": "6.8.12-1021-tegra SMP preempt mod_unload modversions aarch64",
+      "embedded_identity": {}
     },
     "overlay": {
-      "kind": "dtbo",
       "path": "artifacts/tegra234-p3767-camera-p3768-ECM300_MAX96724.dtbo",
-      "install_name": "tegra234-p3767-camera-p3768-ECM300_MAX96724.dtbo",
       "bytes": 33308,
       "sha256": "db8d7fb81c291d9b0994e8a7173f5e335237aa99a3896f26b5a287e5318cf904",
-      "upstream": {
-        "commit": "66e13ae803064226ff489a70b0a52c190f87b4af",
-        "git_path": "imx675-gmsl-max96724/build_output/tegra234-p3767-camera-p3768-ECM300_MAX96724.dtbo",
-        "git_blob": "362d7dd121225866a68478ef6b333eb42befa519"
-      }
+      "kind": "dtbo",
+      "install_name": "tegra234-p3767-camera-p3768-ECM300_MAX96724.dtbo"
     },
     "isp": {
-      "kind": "isp",
       "path": "artifacts/Transcend_GMSL_ECM300.isp",
-      "install_name": "Transcend_GMSL_ECM300.isp",
       "bytes": 90445,
       "sha256": "958c36b230ab5d6a29f0a4a11524a0d7d37d8e475ff5f00686887de0ee668c3f",
-      "upstream": {
-        "commit": "66e13ae803064226ff489a70b0a52c190f87b4af",
-        "git_path": "imx675-gmsl-max96724/build_output/Transcend_GMSL_ECM300.isp",
-        "git_blob": "9cfc216f929b8e6bf877596db072062fa57053c0"
-      }
+      "kind": "isp",
+      "install_name": "Transcend_GMSL_ECM300.isp"
     },
     "nito": {
-      "kind": "nito",
       "path": "artifacts/Transcend_GMSL_ECM300.nito",
-      "install_name": "Transcend_GMSL_ECM300.nito",
       "bytes": 958476,
       "sha256": "eb33d16fd83dea5e9697be2a8c1fbe0998271c3a468ebb4850f8279243d6261b",
-      "upstream": {
-        "commit": "66e13ae803064226ff489a70b0a52c190f87b4af",
-        "git_path": "imx675-gmsl-max96724/build_output/Transcend_GMSL_ECM300.nito",
-        "git_blob": "16db93afb7503cd593079fca1f1ec2a63fbad3f4"
-      }
+      "kind": "nito",
+      "install_name": "Transcend_GMSL_ECM300.nito"
     }
   },
-  "system_module_dependencies": [
-    "tegra-camera"
-  ]
+  "installation_policy": {
+    "isp_destination": "STANDARD"
+  }
 }

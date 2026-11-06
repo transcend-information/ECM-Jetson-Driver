@@ -1,4 +1,4 @@
-"""Pure R20 file/backup primitives, extracted without builder or capture imports."""
+"""File and backup primitives for installation transactions."""
 import contextlib
 import hashlib
 import json
@@ -58,6 +58,9 @@ def atomic_json(path, data):
         owner = owner.parent
     info = owner.stat()
     uid, gid = info.st_uid, info.st_gid
+    from .session import metadata_owner
+    selected=metadata_owner(path)
+    if selected is not None:uid,gid=selected
     _atomic_bytes(path, body, 0o600, uid, gid)
 
 

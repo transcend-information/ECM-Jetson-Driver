@@ -1,0 +1,72 @@
+{
+  "package_id": "ecm300-mipi-jp6",
+  "product": "ECM300",
+  "sensor": "IMX675",
+  "connection": "MIPI",
+  "jetpack": "6",
+  "artifact_set_id": "ecm300-mipi-jp6-intake-20261027-r1-company-jp6-r4",
+  "driver_version": "1.0.5",
+  "overlay_version": null,
+  "release_approved": false,
+  "runtime_verified": false,
+  "target": {
+    "kernel": "5.15.148-tegra",
+    "arch": "aarch64",
+    "l4t": "r36.4.7",
+    "board": null,
+    "abi_reference": null
+  },
+  "system_module_dependencies": [
+    "tegra-camera"
+  ],
+  "mode_metadata": {
+    "max_resolution": [
+      2592,
+      1944
+    ]
+  },
+  "schema": "ecm-public-prebuilt-v1",
+  "audience": "PUBLIC_DISTRIBUTION_CANDIDATE",
+  "artifacts": {
+    "sensor_ko": {
+      "path": "artifacts/ECM300_JP6.ko",
+      "bytes": 100224,
+      "sha256": "0b9271425635a2705548f533ba0631f5119f4b9735d6fcb5ab3aa500c3173972",
+      "kind": "ko",
+      "install_name": "ECM300_JP6.ko",
+      "module_name": "ECM300_JP6",
+      "module_version": "1.0.5",
+      "depends": [
+        "tegra-camera"
+      ],
+      "vermagic": "5.15.148-tegra SMP preempt mod_unload modversions aarch64",
+      "embedded_identity": {
+        "ecm_mode_schema": [
+          "imx675-linear7-20261027-r1"
+        ],
+        "ecm_candidate": [
+          "linear7-exposure-20261027-r1"
+        ]
+      }
+    },
+    "overlay": {
+      "path": "artifacts/tegra234-p3767-camera-p3768-ECM300_JP6.dtbo",
+      "bytes": 9840,
+      "sha256": "b173a661600356697921303223b1a94811b3f03cd7deb87ff61ca579b52e1e97",
+      "kind": "dtbo",
+      "install_name": "tegra234-p3767-camera-p3768-ECM300_JP6.dtbo"
+    },
+    "isp": {
+      "path": "artifacts/Transcend_MIPI_ECM300_JP6.isp",
+      "bytes": 90515,
+      "sha256": "a2267e96041b07879c01a0bb2ed8e11e8bf5bfd19d88a6d6b1d0cd4c9e2ce10a",
+      "kind": "isp",
+      "install_name": "camera_overrides.isp"
+    }
+  },
+  "installation_policy": {
+    "isp_destination": "STANDARD",
+    "module_naming": "ECM_MODEL_JP6_V1",
+    "overlay_destination": "PACKAGE_FILENAME"
+  }
+}

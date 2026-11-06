@@ -3,43 +3,52 @@
   "release_authorized": false,
   "packages": {
     "ecm100-mipi-jp6": {
-      "status": "AWAITING_INTERNAL_FIXED_SOURCE_AND_ARTIFACT_HANDOFF",
-      "manifest": null
+      "status": "FIXED_ARTIFACTS_RECEIVED",
+      "manifest": "packages/ecm100/mipi/jp6/manifest.json",
+      "manifest_sha256": "9437011a83219aff1042259652986e298897dfd983baec57ee421fedc9a3eee7",
+      "qualification": "PAYLOAD_INTEGRITY_CHECKED_TARGET_RUNTIME_NOT_VERIFIED"
     },
     "ecm300-mipi-jp6": {
-      "status": "AWAITING_INTERNAL_FIXED_SOURCE_AND_ARTIFACT_HANDOFF",
-      "manifest": null
-    },
-    "ecm400-mipi-jp6": {
-      "status": "AWAITING_INTERNAL_FIXED_SOURCE_AND_ARTIFACT_HANDOFF",
-      "manifest": null
+      "status": "FIXED_ARTIFACTS_RECEIVED",
+      "manifest": "packages/ecm300/mipi/jp6/manifest.json",
+      "manifest_sha256": "4529a60dcc0ba7d0fbdeef1c381002c448432094abf78be40beb8eef7066e213",
+      "qualification": "PAYLOAD_INTEGRITY_CHECKED_TARGET_RUNTIME_NOT_VERIFIED"
     },
     "ecm300-gmsl-max96724-jp6": {
-      "status": "AWAITING_INTERNAL_FIXED_SOURCE_AND_ARTIFACT_HANDOFF",
-      "manifest": null
+      "status": "FIXED_ARTIFACTS_RECEIVED",
+      "manifest": "packages/ecm300/gmsl/max96717-max96724/jp6/manifest.json",
+      "manifest_sha256": "6a8438d2d03bae76e1ca1a0ed4ad90d211ce400185153d18c883a0392ed4ce2b",
+      "qualification": "PAYLOAD_INTEGRITY_CHECKED_TARGET_RUNTIME_NOT_VERIFIED"
+    },
+    "ecm400-gmsl-max96724-jp6": {
+      "status": "FIXED_ARTIFACTS_RECEIVED",
+      "manifest": "packages/ecm400/gmsl/max96717-max96724/jp6/manifest.json",
+      "manifest_sha256": "95638017eb86b124526db8b4c775b2c9d5bf55245fe12bf32c1e7473e34188af",
+      "qualification": "PAYLOAD_INTEGRITY_CHECKED_TARGET_RUNTIME_NOT_VERIFIED"
     },
     "ecm100-mipi-jp7": {
       "status": "FIXED_ARTIFACTS_RECEIVED",
       "manifest": "packages/ecm100/mipi/jp7/manifest.json",
-      "manifest_sha256": "ed2b56c6ebe4c43ac3a7e0e62bf39430696a9ade367ada9ed26160b50b49f941",
-      "qualification": "LOCAL_UPSTREAM_BINARY_CANDIDATE_NOT_RELEASE_APPROVED"
+      "manifest_sha256": "68be8d508b1991ad9121a460f9439bf6b33b1cb59090580700f20632e90c38a6",
+      "qualification": "PAYLOAD_INTEGRITY_CHECKED_TARGET_RUNTIME_NOT_VERIFIED"
     },
     "ecm300-mipi-jp7": {
       "status": "FIXED_ARTIFACTS_RECEIVED",
       "manifest": "packages/ecm300/mipi/jp7/manifest.json",
-      "manifest_sha256": "2c290b3d57625a710011012d5f3979ad61fe55d6e3cfa937ef7f877c95d02d62",
-      "qualification": "LOCAL_UPSTREAM_BINARY_CANDIDATE_NOT_RELEASE_APPROVED"
+      "manifest_sha256": "a64e4c75337e59164f3d64d132141306c959bd21dc9c1f1e769f77513b59932b",
+      "qualification": "PAYLOAD_INTEGRITY_CHECKED_TARGET_RUNTIME_NOT_VERIFIED"
     },
     "ecm300-gmsl-max96724-jp7": {
       "status": "FIXED_ARTIFACTS_RECEIVED",
       "manifest": "packages/ecm300/gmsl/max96717-max96724/jp7/manifest.json",
-      "manifest_sha256": "9e50d41b53cf790d3285e0f52f2c0e70ab49abff0c81bcbf850544afc6e44439",
-      "qualification": "LOCAL_UPSTREAM_BINARY_CANDIDATE_NOT_RELEASE_APPROVED"
+      "manifest_sha256": "d6e140414654d35e5bc359966d682c181bd75cc2a3d3006c214e31f4ce96f822",
+      "qualification": "PAYLOAD_INTEGRITY_CHECKED_TARGET_RUNTIME_NOT_VERIFIED"
     },
     "ecm400-gmsl-max96724-jp7": {
       "status": "FIXED_ARTIFACTS_RECEIVED",
       "manifest": "packages/ecm400/gmsl/max96717-max96724/jp7/manifest.json",
-      "manifest_sha256": "e8f12a9f704f458bbc450bc2a6cca3d4d257de273623ea5af9b26738344bfd33"
+      "manifest_sha256": "d7de18696b49f66d4eb2cd9b125c55845cb1542e589a918f0ffbce9192974418",
+      "qualification": "PAYLOAD_INTEGRITY_CHECKED_TARGET_RUNTIME_NOT_VERIFIED"
     }
   }
 }

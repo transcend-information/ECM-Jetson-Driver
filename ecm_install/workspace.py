@@ -2,6 +2,7 @@
 import os
 from pathlib import Path
 from .contracts import safe_path
+from .diagnostics import DiagnosticError
 
 MARKERS = ('state','logs','backups','build','reports','argus-helper','trials')
 
@@ -30,12 +31,13 @@ def resolve_workspace(explicit=None, package_dir=None, home=None, cwd=None):
     if explicit is not None:
         record = inspect(cwd / explicit, explicit=True)
         return record
-    paths = [package / 'workspace', home / 'Desktop/ECM_Jetson_Dev', home / 'ECM_Camera_Workspace']
+    paths = [package / 'workspace', home / 'Desktop/ECM_Jetson_Dev',
+             home / 'Desktop/ECM_Camera_Installer_Workspace', home / 'ECM_Camera_Workspace']
     tools = package.parent.parent if package.parent.name == 'tools' else None
     if tools is not None:
         paths.insert(0, tools)
     records = [inspect(path, tools_layout=path == tools) for path in dict.fromkeys(paths)]
     found = [record for record in records if record['existing']]
     if len(found) > 1:
-        raise ValueError('Multiple existing workspaces; specify --workspace. No state was moved: ' + ', '.join(r['path'] for r in found))
+        raise DiagnosticError('Multiple existing workspaces; specify --workspace. No state was moved: ' + ', '.join(r['path'] for r in found), 'MULTIPLE_WORKSPACES',stage='startup')
     return found[0] if found else {'path':str(home / 'ECM_Camera_Workspace'), 'existing':False, 'warnings':[]}

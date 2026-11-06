@@ -1,2 +1,2 @@
-"""Installation-only ECM local candidate."""
-VERSION = 'v0.1.0'
+"""ECM Camera Manager."""
+VERSION = "v0.1.3-public.rc1"

@@ -1,0 +1,11 @@
+apt	-
+base-files	-
+bash	-
+coreutils	-
+dpkg	-
+findutils	-
+grep	-
+nvidia-l4t-core	36.4.7-20250918154033
+perl-base	-
+sed	-
+util-linux	-

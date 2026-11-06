@@ -5,13 +5,23 @@ import re
 import struct
 from pathlib import Path, PurePosixPath
 from .catalog import PACKAGES
+from .diagnostics import DiagnosticError
 
 RECEIVED_SCHEMA = 'ecm-prebuilt-received-v1'
 RECEIVED_AUDIENCE = 'LOCAL_UPSTREAM_BINARY_CANDIDATE'
+LOCAL_BUILD_SCHEMA = 'ecm-prebuilt-local-build-v1'
+LOCAL_BUILD_AUDIENCE = 'LOCAL_CROSS_BUILD_CANDIDATE'
+PUBLIC_SCHEMA = 'ecm-public-prebuilt-v1'
+PUBLIC_AUDIENCE = 'PUBLIC_DISTRIBUTION_CANDIDATE'
 
 
-def require(ok, message):
+def is_real_candidate(manifest):
+    return manifest.get('schema') in (RECEIVED_SCHEMA, LOCAL_BUILD_SCHEMA, PUBLIC_SCHEMA)
+
+
+def require(ok, message, code=None):
     if not ok:
+        if code:raise DiagnosticError(message, code)
         raise ValueError(message)
 
 
@@ -88,36 +98,21 @@ def _elf_info(body):
 def verify_manifest(path, expected_id, expected_digest, *, simulation=False):
     path = Path(path)
     manifest = load_json(path)
-    require(digest(path.read_bytes()) == expected_digest, 'Manifest differs from approved index digest')
-    received = manifest.get('schema') == RECEIVED_SCHEMA
-    require(received or manifest.get('schema') == 'ecm-prebuilt-v1', 'Unsupported prebuilt schema')
+    require(digest(path.read_bytes()) == expected_digest, 'Manifest differs from approved index digest', 'MANIFEST_INTEGRITY')
+    from .public_contract import validate
+    validate(manifest)
     require(manifest.get('package_id') == expected_id and expected_id in PACKAGES, 'Selected package/manifest mismatch')
     expected = PACKAGES[expected_id]
     require(manifest.get('product') == expected['product'] and manifest.get('sensor') == expected['sensor'] and
             manifest.get('connection') == expected['connection'] and manifest.get('jetpack') == expected['jetpack'], 'Manifest product/connection/JetPack mismatch')
-    audience = manifest.get('audience')
-    require(audience == (RECEIVED_AUDIENCE if received else 'SIMULATION_NOT_FOR_RELEASE' if simulation else 'RELEASE'), 'Simulation/release boundary violation')
     token(manifest.get('artifact_set_id'), 'artifact set ID')
-    if received:
-        require(manifest.get('release_approved') is False and manifest.get('runtime_verified') is False, 'Received candidate is not a release/runtime approval')
-        require(all(k in manifest and (manifest[k] is None or isinstance(manifest[k],str) and manifest[k]) for k in ('driver_version','overlay_version')), 'Observed versions must be strings or null')
-        require(all(manifest.get('build_evidence',{}).get(k)=='NOT_VERIFIED' for k in
-                    ('source_to_binary_proof','exact_build_target','target_crc_compatibility','hardware_validation')), 'Explicit unverified build/target/hardware evidence required')
-    else:
-        require(all(isinstance(manifest.get(k), str) and manifest[k] for k in ('driver_version','overlay_version')), 'Candidate versions required')
-    target = manifest.get('target', {})
-    fields = ('kernel','arch') if received else ('kernel','l4t','board','arch')
-    require(all(isinstance(target.get(k), str) and target[k] and target[k] != 'UNCONFIGURED' for k in fields), 'Observed artifact target required' if received else 'Exact artifact build target required')
-    if received:
-        require(all(k in target and (target[k] is None or isinstance(target[k],str) and target[k] and target[k]!='UNCONFIGURED') for k in ('l4t','board')), 'Unknown target fields must be explicit null')
-    token(target['kernel'], 'build kernel')
-    require(target['arch'] == 'aarch64', 'Manifest architecture must match artifact ELF')
-    source = manifest.get('source', {})
-    require(re.fullmatch(r'[0-9a-f]{64}', source.get('snapshot_sha256', '')), 'Final source snapshot required')
-    require(source.get('commit') is None or re.fullmatch(r'[0-9a-f]{40,64}', source['commit']), 'Full source commit required')
-    if received:
-        require(isinstance(source.get('commit'),str) and re.fullmatch(r'[0-9a-f]{40}',source['commit']) and
-                source.get('snapshot_kind')=='REVIEWED_GIT_TREE' and source.get('co_located_in_commit') is True, 'Fixed upstream receipt identity required')
+    require(manifest['release_approved'] is False and manifest['runtime_verified'] is False, 'Invalid qualification flags')
+    for key in ('driver_version', 'overlay_version'):
+        require(manifest[key] is None or isinstance(manifest[key], str) and manifest[key], 'Invalid package version')
+    target = manifest['target']
+    token(target.get('kernel'), 'target kernel')
+    require(target.get('arch') == 'aarch64', 'Package requires aarch64')
+    require(all(value is None or isinstance(value, str) and value for value in target.values()), 'Invalid target fields')
     artifacts = manifest.get('artifacts', {})
     require(set(artifacts) == set(expected['roles']), 'Required artifact roles missing or unexpected')
     contents, filenames, modules = {}, set(), set()
@@ -129,27 +124,22 @@ def verify_manifest(path, expected_id, expected_digest, *, simulation=False):
         filenames.add(filename)
         require(filename.endswith('.' + kind), 'Artifact suffix mismatch')
         asset = safe_path(path.parent, item.get('path', ''))
-        require(asset.is_file() and asset.stat().st_size <= 64 * 1024 * 1024, 'Required artifact missing/oversize: ' + role)
+        require(asset.is_file() and asset.stat().st_size <= 64 * 1024 * 1024, 'Required artifact missing/oversize: ' + role, 'ARTIFACT_MISSING')
         body = asset.read_bytes()
-        require(type(item.get('bytes')) is int and len(body) == item['bytes'] and digest(body) == item.get('sha256'), 'Artifact integrity mismatch: ' + role)
-        if received:
-            upstream=item.get('upstream',{})
-            require(upstream.get('commit')==source['commit'] and isinstance(upstream.get('git_path'),str) and upstream['git_path'], 'Artifact upstream commit/path missing: '+role)
-            require(hashlib.sha1(b'blob '+str(len(body)).encode()+b'\0'+body).hexdigest()==upstream.get('git_blob'), 'Artifact Git blob identity mismatch: '+role)
+        require(type(item.get('bytes')) is int and len(body) == item['bytes'] and digest(body) == item.get('sha256'), 'Artifact integrity mismatch: ' + role, 'ARTIFACT_INTEGRITY')
         if kind == 'ko':
             module = token(item.get('module_name'), 'module name')
             require(filename == module + '.ko' and module not in modules, 'KO name/identity collision')
             modules.add(module)
             require(item.get('vermagic', '').split(' ')[0] == target['kernel'], 'KO declared ABI contradicts manifest target')
             require(isinstance(item.get('depends'), list), 'KO dependencies must be declared')
-            # Sandbox I/O never disables validation of received real binaries.
-            if received or not simulation:
-                info = _elf_info(body)
-                require(info.get('name') == [module] and info.get('vermagic') == [item['vermagic']], 'ELF identity contradicts manifest')
-                require(set((info.get('depends') or [''])[0].split(',')) - {''} == set(item['depends']), 'ELF dependencies contradict manifest')
-                if received:
-                    require('module_version' in item and info.get('version',[]) == ([] if item['module_version'] is None else [item['module_version']]), 'Observed module version contradicts ELF')
-        elif kind == 'dtbo' and (received or not simulation):
+            info = _elf_info(body)
+            require(info.get('name') == [module] and info.get('vermagic') == [item['vermagic']], 'ELF identity contradicts manifest')
+            require(set((info.get('depends') or [''])[0].split(',')) - {''} == set(item['depends']), 'ELF dependencies contradict manifest')
+            require('module_version' in item and info.get('version',[]) == ([] if item['module_version'] is None else [item['module_version']]), 'Observed module version contradicts ELF')
+            for field, values in item.get('embedded_identity',{}).items():
+                require(info.get(field)==values, 'Embedded candidate/source identity contradicts ELF')
+        elif kind == 'dtbo':
             require(len(body) >= 40 and struct.unpack_from('>I', body)[0] == 0xd00dfeed and
                     struct.unpack_from('>I', body, 4)[0] == len(body), 'Invalid DTBO header/length')
         contents[role] = body
@@ -162,11 +152,8 @@ def verify_manifest(path, expected_id, expected_digest, *, simulation=False):
 
 def package_evidence(manifest):
     """Report received bytes separately from execution and qualification."""
-    return dict(artifact_audience=manifest['audience'],manifest_schema=manifest['schema'],
-                source_commit=manifest['source'].get('commit'),source_snapshot_sha256=manifest['source']['snapshot_sha256'],
-                driver_version=manifest.get('driver_version'),overlay_version=manifest.get('overlay_version'),
-                target=manifest['target'],build_evidence=manifest.get('build_evidence',{'scope':'SIMULATION_FIXTURE' if manifest['audience']=='SIMULATION_NOT_FOR_RELEASE' else 'NOT_VERIFIED'}),
-                release_approved=False,native_install_verified=False,hardware_verified=False)
+    from .public_contract import evidence
+    return evidence(manifest)
 
 
 def destinations(manifest, transaction_id):
@@ -178,9 +165,14 @@ def destinations(manifest, transaction_id):
         if kind == 'ko':
             result[role] = '/lib/modules/' + token(manifest['target']['kernel'], 'kernel') + '/updates/drivers/media/i2c/' + name
         elif kind == 'dtbo':
-            result[role] = '/boot/ecm-' + transaction_id + '.dtbo'
+            from .jp6_names import enabled
+            result[role] = '/boot/'+name if enabled(manifest) else '/boot/ecm-' + transaction_id + '.dtbo'
         else:
-            target_name = 'camera_overrides.isp' if role == 'isp' and manifest['jetpack'] == '6' else name
+            preserve_isp = (manifest.get('package_id') in ('ecm300-gmsl-max96724-jp6', 'ecm400-gmsl-max96724-jp6') and
+                            ((manifest.get('schema')==PUBLIC_SCHEMA and manifest.get('installation_policy',{}).get('isp_destination')=='PACKAGE_FILENAME') or
+                             (manifest.get('reception', {}).get('intake_kind') == 'FIXED_LATEST_UPSTREAM' and
+                              manifest.get('installation_policy', {}).get('isp_destination') == 'UPSTREAM_ORIGINAL_NAME')))
+            target_name = 'camera_overrides.isp' if role == 'isp' and manifest['jetpack'] == '6' and not preserve_isp else name
             result[role] = '/var/nvidia/nvcam/settings/' + target_name
     require(len(set(result.values())) == len(result), 'Destination collision')
     result['extlinux'] = '/boot/extlinux/extlinux.conf'
@@ -194,7 +186,7 @@ def compare_environment(actual, target):
         if key not in target:
             continue
         value = actual.get(key)
-        status = 'Not verified' if expected is None or value is None else 'Matched' if value == expected else 'Warning'
+        status = 'Not verified' if expected is None or value is None else 'Matched' if value == expected else 'Different'
         comparisons.append(dict(check=key, actual=value, expected=expected, status=status,
                                 reason='Package target/reference is unknown' if expected is None else 'Observation unavailable' if value is None else 'Matches reference' if value == expected else 'Host differs from package target',
                                 value_source='passive host observation', decision='continue', policy_id='environment-warning-v1'))

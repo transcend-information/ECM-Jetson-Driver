@@ -1,14 +1,18 @@
-"""Installation-only screens using R20 terminal primitives."""
+"""External Manager screens using R20 terminal primitives."""
 import argparse
 from pathlib import Path
 import sys
+import json
 from . import VERSION, ui
-from .catalog import Catalog, PACKAGES, PUBLIC_PACKAGES
-from .contracts import verify_manifest, compare_environment, package_evidence, RECEIVED_SCHEMA
+from .catalog import Catalog, PACKAGES
+from .contracts import verify_manifest, compare_environment, package_evidence
 from .system import SystemIO
 from .workspace import resolve_workspace
 from .transaction import Engine
-from .runlog import Report, reports, export_report
+from .runlog import Report, reports, emergency_record
+from .diagnostics import DiagnosticError, error_detail
+from .identity import recorded_identity
+from . import setup_display
 
 PACKAGE = Path(__file__).resolve().parents[1]
 
@@ -24,189 +28,216 @@ def ask(prompt):
         return 'B'
 
 
-def select_package(host, catalog):
-    family = host.get('jetpack')
-    while True:
-        if family not in ('6','7'):
-            ui.begin('Home > Install / Switch Camera > JetPack', VERSION)
-            ui.line('Environment: Not verified. Select the intended package family.')
-            ui.footer('[6] JetPack 6.x', '[7] JetPack 7.x', '[B] Back')
-            family = ask('Select: ')
-            if family.upper() == 'B':
-                return None
-            if family not in ('6','7'):
-                continue
-        ui.begin('Home > Install / Switch Camera > Camera setup', VERSION)
-        ui.line('Package family: JetPack ' + family + '.x (host detection does not identify the camera)')
-        keys = [key for key, item in PUBLIC_PACKAGES.items() if item['jetpack'] == family]
-        for index, key in enumerate(keys, 1):
-            item = PACKAGES[key]
-            status = 'Received' if catalog.manifest(key) is not None else 'Awaiting artifacts'
-            ui.line('[' + str(index) + '] ' + item.get('display_name', item['product']) + ' / ' + item['sensor'] + ' / ' + item['connection'] + ' / ' + item['port'] + (' / ' + item['serdes'] if 'serdes' in item else '') + ' | ' + status)
-        ui.footer('[9] Change JetPack family', '[B] Back')
-        value = ask('Select: ')
-        if value.upper() == 'B':
-            return None
-        if value == '9':
-            family = None
-        elif value.isdigit() and 1 <= int(value) <= len(keys):
-            return keys[int(value)-1]
+def select_package(host, catalog, current=None, report=None):
+    from .selection import select
+    return select(host, catalog, ask, current, report)
+
 
 
 def installation(engine, catalog):
-    host = engine.system.observe()
-    key = select_package(host, catalog)
-    if key is None:
-        ui.line('Cancelled. No installation writes.')
-        return
-    report = Report(engine.workspace, 'install', engine.system)
+    from ecm_env.ui import guard
+    if not guard('driver_install', workspace=engine.workspace): return
+    report = None
+    key = None
     try:
+        report = Report(engine.workspace, 'install', engine.system)
+        report.stage('environment_check')
+        host = engine.system.observe()
+        report.bind(host=host)
+        report.stage('package_check')
+        current = recorded_identity(engine)
+        report.bind(recorded_current=current)
+        key = select_package(host, catalog, current, report)
+        if key is None:
+            report.finish('CANCELLED', 'Package selection cancelled before transaction creation')
+            ui.line('Cancelled. No installation writes.')
+            return
+        report.bind(package_id=key)
         record = catalog.manifest(key)
         item = PACKAGES[key]
-        ui.begin('Home > Install / Switch Camera > Confirm installation', VERSION)
-        ui.line('Install Target    : ' + item.get('display_name', item['product']) + ' / ' + item['connection'] + ' / JP' + item['jetpack'] + ' / ' + item['port'])
-        ui.line('Current System    : ' + str(host.get('l4t')) + ' / Kernel ' + str(host.get('kernel')))
+        setup_display.install_page('Confirm installation', host, current, item['jetpack'])
         if record is None:
-            ui.line('Package Status    : Awaiting artifacts')
-            ui.line('No approved KO / DTBO / tuning set has been received for this package.')
-            report.finish('AWAITING_ARTIFACTS', 'No installable artifact set received', package_id=key)
+            setup_display.show_target(item, item['jetpack'], host)
+            ui.line('Package Status    : Package unavailable')
+            ui.line('The fixed installation set is not included in this package.')
+            report.finish('AWAITING_ARTIFACTS', 'No installable artifact set in this package', package_id=key)
             ui.line('Log: ' + str(report.directory))
             return
         path, expected_digest = record
         manifest, _ = verify_manifest(path, key, expected_digest, simulation=engine.system.simulation)
+        report.stage('environment_check')
         environment = compare_environment(host, manifest['target'])
         evidence = package_evidence(manifest)
+        report.bind(environment=environment, package_evidence=evidence, manifest_sha256=expected_digest)
         report.event('package-verified', package_id=key, artifact_set_id=manifest['artifact_set_id'], manifest_sha256=expected_digest, environment=environment, package_evidence=evidence)
-        ui.line('Package Target    : L4T ' + str(manifest['target'].get('l4t') or 'Not verified') + ' / Kernel ' + manifest['target']['kernel'])
-        ui.line('Board Target      : ' + str(manifest['target'].get('board') or 'Not verified'))
-        ui.line('Driver Version    : ' + str(manifest.get('driver_version') or 'Not verified'))
-        ui.line('Overlay Version   : ' + str(manifest.get('overlay_version') or 'Not verified'))
-        received = manifest['schema'] == RECEIVED_SCHEMA
-        ui.line('Package Status    : ' + ('Received upstream binaries / not release approved' if received else 'SIMULATION / NOT FOR RELEASE' if engine.system.simulation else 'Verified files'))
-        ui.line('Artifact Set      : ' + manifest['artifact_set_id'])
-        if received:
-            ui.line('Source commit     : ' + manifest['source']['commit'])
-            ui.line('Build / target ABI / hardware: Not verified; static artifact checks only.')
-            if engine.system.simulation:ui.line('Execution         : LOCAL_SIMULATION using received real bytes')
-        for comparison in environment:
-            ui.line(comparison['check'] + ': ' + comparison['status'] + ' | actual=' + str(comparison['actual']) + ' | expected=' + str(comparison['expected']))
-        if any(c['status'] != 'Matched' for c in environment):
-            ui.line('Environment differences are recorded. Installation will continue after the normal confirmation.')
-        ui.line('1. Back up current files and installed state.')
-        ui.line('2. Install this fixed package and prepare the next boot entry.')
-        ui.line('3. Save the transaction and recovery evidence. No restart is performed.')
+        report.bind(recorded_current=current,selected_identity={'package_id':key,'artifact_set_id':manifest['artifact_set_id'],'manifest_sha256':expected_digest},
+                    package_details={'source':manifest.get('source'),'build_reference':manifest.get('build_reference'),
+                                     'reference_validation':manifest.get('reference_validation'),'manifest':manifest})
+        matches=all(c['status']=='Matched' for c in environment)
+        setup_display.show_target(item, item['jetpack'], host, manifest, environment)
+        ui.line('Driver Version    : ' + (manifest.get('driver_version') or 'Not declared'))
+        ui.line('Package Status    : Precompiled / Package file checksums verified')
+        if engine.system.simulation:ui.line('LOCAL_SIMULATION / no host installation')
+        if not matches:
+            report.event('environment-warning', error_code='ENVIRONMENT_WARNING', comparisons=environment, decision='continue')
+        ui.rule()
+        ui.line('What happens next')
+        ui.line('  1. Back up the current setup and installation records.')
+        ui.line('  2. Install the precompiled Driver and tuning files.')
+        ui.line('  3. Prepare the next boot configuration.')
+        ui.line('  4. Restart the Jetson manually after installation.')
+        ui.line('Insufficient original-backup space produces a warning; full restoration may be unavailable.')
+        ui.line('Change camera cables only with power disconnected.')
+        ui.footer('Nothing is installed until you confirm.', 'Package details are retained in the log.')
+        report.stage('confirmation')
         if ask('Install this camera setup? [Y/N] (Enter = No): ').lower() != 'y':
             report.finish('CANCELLED', 'Installation cancelled before planning', package_id=key)
             ui.line('Cancelled. No installation writes.')
             return
         report.event('normal-install-confirmation', accepted=True, package_id=key)
         def finish(result):
-            report.finish('SUCCESS', 'Installation files completed; runtime not verified', transaction_id=result['transaction_id'], package_id=key, environment=environment, package_evidence=evidence)
-        result = engine.install(key, path, expected_digest, report.id, on_complete=finish)
-        ui.line('[SUCCESS] Installation files completed. Restart required on the target system; runtime not verified.')
-        ui.line('Transaction: ' + result['transaction_id'])
+            report.finish('SUCCESS', 'Installation files installed. Manual restart required.', transaction_id=result['transaction_id'], package_id=key, environment=environment, package_evidence=evidence, backup_coverage=result.get('backup_coverage'), restoration_complete=result.get('restoration_complete',True))
+        if engine.system.simulation:
+            result = engine.install(key, path, expected_digest, report.id, on_complete=finish, diagnostics=report)
+        else:
+            from .privileged import launch_install
+            result = launch_install(engine,catalog,report,key,expected_digest)
+        label = 'SUCCESS WITH WARNING' if result.get('restoration_complete') is False else 'SUCCESS'
+        ui.line('[' + label + '] Installation files installed. Restart the Jetson manually.')
+        if result.get('restoration_complete') is False:
+            ui.line('Warning: Installation completed with incomplete original backups; full restoration is unavailable.')
         if result.get('history_notices'):
             ui.line('Warning: unrelated history was not verified; preserved and recorded in the transaction log.')
     except Exception as exc:
-        try:
-            report.finish('FAILED', str(exc), package_id=key)
-        except Exception as log_error:
-            ui.line('[ERROR] Required report persistence failed: ' + str(log_error))
-        ui.line('[ERROR] ' + str(exc))
-    ui.line('Report ID: ' + report.id)
-    ui.line('Log: ' + str(report.directory))
+        show_failure(report, exc, 'install', package_id=key)
+    finally:
+        if report is not None:
+            ui.line('Report ID: ' + report.id)
+            ui.line('Log: ' + str(report.emergency_directory or report.directory))
+            if report.emergency_directory is None:
+                ui.line('View this report in Troubleshoot > Installation Logs.')
 
 
-def restoration(engine):
-    report = Report(engine.workspace, 'restore', engine.system)
+def show_failure(report, exc, operation, **fields):
+    detail = error_detail(exc, report.stage_name if report else 'startup')
     try:
-        target = engine.restore_target()
-        ui.begin('Home > Backups / Restore', VERSION)
-        ui.line('[1] ' + target['kind'].title() + ' transaction ' + target['transaction_id'] + ' / ' + target['package_id'])
-        ui.line('Only the latest active transaction is selectable. Older backups remain preserved.')
-        ui.footer('[B] Back')
-        if ask('Select backup: ') != '1':
-            report.finish('CANCELLED', 'Restore cancelled before planning')
-            return
-        ui.line('Restore original bytes, permissions and recorded absence; preserve unrelated files and history.')
-        if ask('Restore this backup? [Y/N] (Enter = No): ').lower() != 'y':
-            report.finish('CANCELLED', 'Restore confirmation declined')
-            return
-        report.event('normal-restore-confirmation', accepted=True, target=target)
-        def finish(result):
-            report.finish('SUCCESS', 'Restore/recovery files completed; runtime not verified', transaction_id=result['transaction_id'], package_evidence=result.get('package_evidence'))
-        result = engine.restore(report.id, on_complete=finish)
-        ui.line('[SUCCESS] Restore / recovery completed. No restart was performed.')
-    except Exception as exc:
-        report.finish('FAILED', str(exc))
-        ui.line('[ERROR] ' + str(exc))
-    ui.line('Report ID: ' + report.id)
-    ui.line('Log: ' + str(report.directory))
+        if report is not None:
+            record = report.fail(exc, **fields)
+        else:
+            directory, record = emergency_record(operation, exc, context=fields, primary=detail)
+            ui.line('Emergency log: ' + str(directory))
+    except Exception as persistence:
+        record = dict(status='FAILED', operation=operation, transaction_id=None,
+                      diagnostic=detail, log_available=False, persistence_error=str(persistence))
+        print(json.dumps(record), file=sys.stderr)
+        ui.line('Log persistence unavailable; diagnostic record emitted to stderr.')
+    outcome=detail.get('outcome','FAILED')
+    ui.line('['+outcome+'] ' + detail['stage'] + ' / ' + detail['error_code'])
+    if outcome=='PARTIAL':
+        ui.line('Boot configuration incomplete.' if detail['stage']=='boot_config' else 'Installation incomplete.')
+        ui.line('New files already written are retained. Keep the Jetson running.')
+    if detail.get('recovery_status') == 'FILES_RESTORED':
+        ui.line('Earlier file changes were rolled back.')
+    context=detail.get('context',{})
+    if context.get('destination'):ui.line('Destination: '+context['destination'])
+    completed=detail.get('completed_roles',context.get('completed_roles',[]))
+    if completed:ui.line('Writes completed before failure: '+', '.join(completed))
+    ui.line('Cause: ' + detail['message'].replace('\n', ' ')[:180])
+    ui.line('Next: ' + detail['next_action'])
 
 
 def log_menu(engine):
     records, warnings = reports(engine.workspace)
-    ui.begin('Home > Installation logs', VERSION)
+    records = [(p, r) for p, r in records if r.get('operation') == 'install']
+    ui.begin('Home > Troubleshoot > Installation Logs', VERSION)
     for warning in warnings:
         ui.line(warning)
     for index, (_, record) in enumerate(records, 1):
-        ui.line('[' + str(index) + '] ' + record['report_id'] + ' / ' + record['operation'] + ' / ' + record['status'])
-    ui.footer('[B] Back')
+        label = record['status']
+        if label == 'SUCCESS' and record.get('restoration_complete') is False:
+            label = 'SUCCESS WITH WARNING'
+        ui.line('[%d] %s / install / %s' % (index, record['report_id'], label))
+    if not records:
+        ui.line('No saved installation reports.')
+    ui.footer('[0] Back')
     value = ask('View report: ')
-    if value.isdigit() and 1 <= int(value) <= len(records):
+    if value.isascii() and value.isdigit() and len(value) <= 6 and 1 <= int(value) <= len(records):
         directory, record = records[int(value)-1]
-        ui.line(record['message'])
+        if 'recorded_result' in record:
+            ui.line('Originally recorded: ' + str(record['recorded_result']['status']))
+            ui.line('Current evidence: ' + record['status'])
+        if record['status'] == 'SUCCESS':
+            ui.line('Installation files installed. Manual restart required.')
+            if record.get('restoration_complete') is False:
+                ui.line('Some original files could not be backed up.')
+        else:
+            ui.line(str(record['message']))
+            ui.line('Stage / code: ' + str(record.get('stage')) + ' / ' + str(record.get('error_code')))
+        for warning in record.get('record_warnings', []):
+            ui.line('Evidence: ' + warning)
         ui.line('Log: ' + str(directory))
-        if ask('Export installation summary? [Y/N] (Enter = No): ').lower() == 'y':
-            destination, sha = export_report(engine.workspace, directory)
-            ui.line('Export: ' + destination)
-            ui.line('SHA256: ' + sha)
+        ask('Press Enter to return: ')
+
+
+def troubleshoot_menu(engine):
+    environment_report = None
+    while True:
+        ui.begin('Home > Troubleshoot', VERSION)
+        ui.line('Installation Logs   View saved installation reports and error details.')
+        ui.line('Environment Check   Check system requirements for driver installation.')
+        ui.footer('[1] Installation Logs', '[2] Environment Check', '[B] Back')
+        value = ask('Select: ')
+        if value.lower() in ('0', 'b'):
+            return environment_report
+        if value == '1':
+            log_menu(engine)
+        elif value == '2':
+            from ecm_env.ui import menu
+            environment_report = menu(ask, workspace=engine.workspace)
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description='ECM installation-only local candidate')
+    parser = argparse.ArgumentParser(description='ECM Camera Manager local review candidate')
     parser.add_argument('--workspace')
     parser.add_argument('--version', action='store_true')
     args = parser.parse_args(argv)
     if args.version:
         print(VERSION)
         return 0
+    from ecm_env.ui import startup
     try:
         system, catalog = create_services(PACKAGE)
         record = resolve_workspace(args.workspace, PACKAGE)
         engine = Engine(record['path'], system)
+        environment_report = startup(ask,workspace=engine.workspace)
         while True:
             host = system.observe()
-            ui.begin('Home', VERSION)
-            ui.line('System: JetPack ' + str(host.get('jetpack') or 'Not verified') + ' / L4T ' + str(host.get('l4t') or 'Not verified'))
-            ui.line('Kernel: ' + str(host.get('kernel')))
+            current=recorded_identity(engine)
+            observations=system.home_observe()
+            setup_display.home(host,current,environment_report,observations,record['warnings'])
+            from . import r20_storage as storage
             try:
-                installed = engine.state()
-                ui.line('Camera Setup: ' + (installed.get('package_id', installed.get('profile_id', 'Recorded legacy setup')) if installed else 'Not selected'))
-                ui.line('Installed State: ' + (installed.get('status', 'Recorded; not runtime verified') if installed else 'No managed installation recorded'))
-            except (OSError, ValueError) as exc:
-                ui.line('Installed State: Not verified (' + str(exc) + ')')
-            ui.line('Camera Device: Not verified; no active probe or capture is performed')
-            ui.line('Workspace: ' + str(engine.workspace))
-            received = [k for k in PUBLIC_PACKAGES if catalog.manifest(k) is not None]
-            ui.line('Package Status: ' + str(len(received)) + ' received / ' + str(len(PUBLIC_PACKAGES)-len(received)) + ' awaiting; target / hardware Not verified')
-            # for key in received:
-            #     item=PACKAGES[key]
-            #     ui.line('Received: ' + item['product'] + ' / ' + item['connection'] + ' / JP' + item['jetpack'])
+                storage.atomic_json(engine.wpath('logs/home/latest.json'),
+                    {'host':host,'recorded_current':current,'observations':observations,
+                     'environment_check':environment_report.get('startup_check',{}),
+                     'execution_identity':environment_report.get('execution_identity',{})})
+            except OSError as exc:
+                ui.line('Notice: Home observation log unavailable: ' + str(exc))
             if system.simulation:
                 ui.line('LOCAL_SIMULATION / NOT FOR RELEASE / no hardware verification')
-            for warning in record['warnings']:
-                ui.line('Warning: ' + warning)
-            ui.footer('[1] Install / Switch Camera', '[2] Backups / Restore', '[3] Installation logs', '[0] Exit')
+            ui.footer('[1] Install / Switch Camera', '[2] Troubleshoot', '[0] Exit')
             value = ask('Select: ')
             if value in ('0','B','b'):
                 return 0
             try:
-                if value == '1': installation(engine, catalog)
-                elif value == '2': restoration(engine)
-                elif value == '3': log_menu(engine)
+                if value == '1':
+                    installation(engine, catalog)
+                    ask('Press Enter to return: ')
+                elif value == '2':
+                    updated=troubleshoot_menu(engine)
+                    if updated:environment_report=updated
             except Exception as exc:
                 ui.line('[ERROR] ' + str(exc))
     except (ValueError, OSError, RuntimeError) as exc:
-        print('[ERROR] ' + str(exc), file=sys.stderr)
+        show_failure(None, exc, 'startup')
         return 2

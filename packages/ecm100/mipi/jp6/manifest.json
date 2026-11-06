@@ -1,0 +1,65 @@
+{
+  "package_id": "ecm100-mipi-jp6",
+  "product": "ECM100",
+  "sensor": "GC2093",
+  "connection": "MIPI",
+  "jetpack": "6",
+  "artifact_set_id": "ecm100-mipi-jp6-intake-20261027-r1-company-jp6-r4",
+  "driver_version": "1.0.4",
+  "overlay_version": null,
+  "release_approved": false,
+  "runtime_verified": false,
+  "target": {
+    "kernel": "5.15.148-tegra",
+    "arch": "aarch64",
+    "l4t": "r36.4.7",
+    "board": null,
+    "abi_reference": null
+  },
+  "system_module_dependencies": [
+    "tegra-camera"
+  ],
+  "mode_metadata": {
+    "max_resolution": [
+      1920,
+      1080
+    ]
+  },
+  "schema": "ecm-public-prebuilt-v1",
+  "audience": "PUBLIC_DISTRIBUTION_CANDIDATE",
+  "artifacts": {
+    "sensor_ko": {
+      "path": "artifacts/ECM100_JP6.ko",
+      "bytes": 90112,
+      "sha256": "e15060c59d9c94e934452eef93794e2bfe859817cf664b89b5829c16d2ed225a",
+      "kind": "ko",
+      "install_name": "ECM100_JP6.ko",
+      "module_name": "ECM100_JP6",
+      "module_version": "1.0.4",
+      "depends": [
+        "tegra-camera"
+      ],
+      "vermagic": "5.15.148-tegra SMP preempt mod_unload modversions aarch64",
+      "embedded_identity": {}
+    },
+    "overlay": {
+      "path": "artifacts/tegra234-p3767-camera-p3768-ECM100_JP6.dtbo",
+      "bytes": 7192,
+      "sha256": "268866bbf58003d13b9877628b8128cdffed89c898c47f151f06720e1504782c",
+      "kind": "dtbo",
+      "install_name": "tegra234-p3767-camera-p3768-ECM100_JP6.dtbo"
+    },
+    "isp": {
+      "path": "artifacts/Transcend_MIPI_ECM100_JP6.isp",
+      "bytes": 90830,
+      "sha256": "f6a6f442b59f96c9808b079a5695c8872e615162ca14b3f1201560943318878f",
+      "kind": "isp",
+      "install_name": "camera_overrides.isp"
+    }
+  },
+  "installation_policy": {
+    "isp_destination": "STANDARD",
+    "module_naming": "ECM_MODEL_JP6_V1",
+    "overlay_destination": "PACKAGE_FILENAME"
+  }
+}
