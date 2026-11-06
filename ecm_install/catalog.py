@@ -5,19 +5,21 @@ import json
 AWAITING = 'AWAITING_ARTIFACTS'
 PACKAGES = {}
 for family in ('6', '7'):
-    for product, sensor, connection, port in (
-        ('ECM100', 'GC2093', 'MIPI', 'CAM1'),
-        ('ECM300', 'IMX675', 'MIPI', 'CAM1'),
-        ('ECM300', 'IMX675', 'GMSL', 'A-D'),
-        ('ECM400', 'IMX415', 'GMSL', 'Single channel / VC0'),
+    for product, sensor, deserializer, port in (
+        ('ECM100', 'GC2093', None, 'CAM1'),
+        ('ECM300', 'IMX675', None, 'CAM1'),
+        ('ECM300', 'IMX675', 'MAX96724', 'A-D'),
+        ('ECM300', 'IMX675', 'MAX9296', 'A-B'),
+        ('ECM400', 'IMX415', 'MAX96724', 'Single channel / VC0'),
+        ('ECM400', 'IMX415', 'MAX9296', 'A-B'),
     ):
         roles = {'sensor_ko': 'ko', 'overlay': 'dtbo', 'isp': 'isp'}
         key = product.lower() + '-mipi-jp' + family
-        item = dict(product=product, sensor=sensor, connection=connection, port=port,
+        item = dict(product=product, sensor=sensor, connection='MIPI', port=port,
                     jetpack=family, roles=roles)
-        if connection == 'GMSL':
-            key = product.lower() + '-gmsl-max96724-jp' + family
-            item.update(product=product+'G2F', serdes='MAX96717/MAX96724')
+        if deserializer:
+            key = f'{product.lower()}-gmsl-{deserializer.lower()}-jp{family}'
+            item.update(product=product+'G2F', connection='GMSL', serdes='MAX96717/'+deserializer)
             roles.update(serializer_ko='ko', deserializer_ko='ko')
         if family == '7':
             roles['nito'] = 'nito'

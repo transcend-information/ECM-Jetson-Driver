@@ -7,9 +7,13 @@ Local public candidate v0.1.3-public.rc1 for NVIDIA Jetson. The Manager installs
 | TS-ECM100M22 | GC2093 | MIPI, CAM1 | `ecm100-mipi-jp6` | `ecm100-mipi-jp7` |
 | TS-ECM300M22 | IMX675 | MIPI, CAM1 | `ecm300-mipi-jp6` | `ecm300-mipi-jp7` |
 | TS-ECM300G2F / TS-ECM301G2F | IMX675 | GMSL, MAX96717 / MAX96724, A–D | `ecm300-gmsl-max96724-jp6` | `ecm300-gmsl-max96724-jp7` |
+| TS-ECM300G2F / TS-ECM301G2F | IMX675 | GMSL, MAX96717 / MAX9296, A–B | `ecm300-gmsl-max9296-jp6` | `ecm300-gmsl-max9296-jp7` |
 | TS-ECM400G2F | IMX415 | GMSL, MAX96717 / MAX96724, single channel / VC0 | `ecm400-gmsl-max96724-jp6` | `ecm400-gmsl-max96724-jp7` |
+| TS-ECM400G2F | IMX415 | GMSL, MAX96717 / MAX9296, A–B | `ecm400-gmsl-max9296-jp6` | `ecm400-gmsl-max9296-jp7` |
 
-The JP6 artifacts target kernel `5.15.148-tegra` and the JP7 artifacts target `6.8.12-1021-tegra`. Review the detected host and declared package target on the confirmation screen. Each manifest records the target fields available for that package. Hardware qualification for this public candidate is pending.
+These 12 packages cover six configurations on each JetPack version. The GMSL routes above come from the packaged overlays. Physical port mapping and operation on hardware are pending verification for this candidate.
+
+The JP6 artifacts target kernel `5.15.148-tegra` and the JP7 artifacts target `6.8.12-1021-tegra`. Review the detected host and declared package target on the confirmation screen. Each manifest records the target fields available for that package.
 
 ## Start the Manager for the first time
 
@@ -31,7 +35,7 @@ bash ecm_camera_manager.sh
 
 ## Install the driver
 
-Choose **Install / Switch Camera**, select the model family and connection, and select the serializer / deserializer for GMSL. Review the package ID and target. Press **Enter** or **N** to cancel. Enter **Y** to start the seven installation stages.
+Choose **Install / Switch Camera** and select the model family and connection. For GMSL, choose **MAX96717 / MAX96724** or **MAX96717 / MAX9296** to match your hardware. Review the package ID and JetPack target on the confirmation screen. Press **Enter** or **N** to cancel. Enter **Y** to start the seven installation stages.
 
 The installer backs up affected files, takes over eligible older drivers, writes the selected package and boot configuration, updates module indexes and saves the result. The example below shows all seven stages completed for an ECM100 MIPI on JetPack 6. The success message confirms that the files were installed.
 

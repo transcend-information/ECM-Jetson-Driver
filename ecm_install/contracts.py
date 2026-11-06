@@ -143,6 +143,14 @@ def verify_manifest(path, expected_id, expected_digest, *, simulation=False):
             require(len(body) >= 40 and struct.unpack_from('>I', body)[0] == 0xd00dfeed and
                     struct.unpack_from('>I', body, 4)[0] == len(body), 'Invalid DTBO header/length')
         contents[role] = body
+    if expected['connection'] == 'GMSL':
+        require(manifest.get('serdes') == expected['serdes'] and manifest.get('port') == expected['port'],
+                'Manifest serializer/deserializer or camera ports differ from selection')
+        serializer, deserializer = expected['serdes'].split('/')
+        require(artifacts['serializer_ko']['module_name'] == serializer and
+                artifacts['deserializer_ko']['module_name'] == deserializer and
+                {serializer, deserializer} <= set(artifacts['sensor_ko']['depends']),
+                'GMSL driver modules do not match the selected serializer/deserializer')
     for role, item in artifacts.items():
         if item['kind'] == 'ko':
             allowed = modules | set(manifest.get('system_module_dependencies', []))

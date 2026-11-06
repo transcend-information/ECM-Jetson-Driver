@@ -20,10 +20,22 @@
       "manifest_sha256": "6a8438d2d03bae76e1ca1a0ed4ad90d211ce400185153d18c883a0392ed4ce2b",
       "qualification": "PAYLOAD_INTEGRITY_CHECKED_TARGET_RUNTIME_NOT_VERIFIED"
     },
+    "ecm300-gmsl-max9296-jp6": {
+      "status": "FIXED_ARTIFACTS_RECEIVED",
+      "manifest": "packages/ecm300/gmsl/max96717-max9296/jp6/manifest.json",
+      "manifest_sha256": "e040b70f332e0a44f2074f6b684247aa6e475c1a5e61b287b2d05d2684af061e",
+      "qualification": "PAYLOAD_INTEGRITY_CHECKED_TARGET_RUNTIME_NOT_VERIFIED"
+    },
     "ecm400-gmsl-max96724-jp6": {
       "status": "FIXED_ARTIFACTS_RECEIVED",
       "manifest": "packages/ecm400/gmsl/max96717-max96724/jp6/manifest.json",
       "manifest_sha256": "95638017eb86b124526db8b4c775b2c9d5bf55245fe12bf32c1e7473e34188af",
+      "qualification": "PAYLOAD_INTEGRITY_CHECKED_TARGET_RUNTIME_NOT_VERIFIED"
+    },
+    "ecm400-gmsl-max9296-jp6": {
+      "status": "FIXED_ARTIFACTS_RECEIVED",
+      "manifest": "packages/ecm400/gmsl/max96717-max9296/jp6/manifest.json",
+      "manifest_sha256": "5800817125b49c875e8e324a61f03976dd0cd267a474df055e6c0b74926aabe1",
       "qualification": "PAYLOAD_INTEGRITY_CHECKED_TARGET_RUNTIME_NOT_VERIFIED"
     },
     "ecm100-mipi-jp7": {
@@ -44,11 +56,21 @@
       "manifest_sha256": "d6e140414654d35e5bc359966d682c181bd75cc2a3d3006c214e31f4ce96f822",
       "qualification": "PAYLOAD_INTEGRITY_CHECKED_TARGET_RUNTIME_NOT_VERIFIED"
     },
+    "ecm300-gmsl-max9296-jp7": {
+      "status": "FIXED_ARTIFACTS_RECEIVED",
+      "manifest": "packages/ecm300/gmsl/max96717-max9296/jp7/manifest.json",
+      "manifest_sha256": "1ea4e4ff344086f8cfd300cfd38350e64a78767b3b14cccba89574a4699d7ede"
+    },
     "ecm400-gmsl-max96724-jp7": {
       "status": "FIXED_ARTIFACTS_RECEIVED",
       "manifest": "packages/ecm400/gmsl/max96717-max96724/jp7/manifest.json",
       "manifest_sha256": "d7de18696b49f66d4eb2cd9b125c55845cb1542e589a918f0ffbce9192974418",
       "qualification": "PAYLOAD_INTEGRITY_CHECKED_TARGET_RUNTIME_NOT_VERIFIED"
+    },
+    "ecm400-gmsl-max9296-jp7": {
+      "status": "FIXED_ARTIFACTS_RECEIVED",
+      "manifest": "packages/ecm400/gmsl/max96717-max9296/jp7/manifest.json",
+      "manifest_sha256": "4919ca68c64ad62ab1528ae0a5ac4f1a6e5e079cd62fde7e32cd0e599e1979a1"
     }
   }
 }

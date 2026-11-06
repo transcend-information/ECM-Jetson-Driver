@@ -1,0 +1,91 @@
+{
+  "package_id": "ecm300-gmsl-max9296-jp6",
+  "product": "ECM300G2F",
+  "sensor": "IMX675",
+  "connection": "GMSL",
+  "jetpack": "6",
+  "artifact_set_id": "ecm300-gmsl-max9296-jp6-49ce771b904b-latest-20261029-r1",
+  "driver_version": null,
+  "overlay_version": null,
+  "release_approved": false,
+  "runtime_verified": false,
+  "target": {
+    "kernel": "5.15.148-tegra",
+    "arch": "aarch64",
+    "l4t": null,
+    "board": null,
+    "abi_reference": null
+  },
+  "system_module_dependencies": [
+    "tegra-camera"
+  ],
+  "mode_metadata": {
+    "max_resolution": [
+      2592,
+      1944
+    ]
+  },
+  "serdes": "MAX96717/MAX9296",
+  "port": "A-B",
+  "schema": "ecm-public-prebuilt-v1",
+  "audience": "PUBLIC_DISTRIBUTION_CANDIDATE",
+  "artifacts": {
+    "sensor_ko": {
+      "path": "artifacts/ECM300_MAX9296.ko",
+      "bytes": 115392,
+      "sha256": "da7332483470ab9bb8e1d0f455fc4cd89ba53af0cd8f093812e814038581ac03",
+      "kind": "ko",
+      "install_name": "ECM300_MAX9296.ko",
+      "module_name": "ECM300_MAX9296",
+      "module_version": null,
+      "depends": [
+        "MAX96717",
+        "MAX9296",
+        "tegra-camera"
+      ],
+      "vermagic": "5.15.148-tegra SMP preempt mod_unload modversions aarch64",
+      "embedded_identity": {}
+    },
+    "serializer_ko": {
+      "path": "artifacts/MAX96717.ko",
+      "bytes": 54848,
+      "sha256": "dbd2cdfb7ad26520482dc84691b6d462c5c1805b782e8e386434c4686acc216c",
+      "kind": "ko",
+      "install_name": "MAX96717.ko",
+      "module_name": "MAX96717",
+      "module_version": null,
+      "depends": [],
+      "vermagic": "5.15.148-tegra SMP preempt mod_unload modversions aarch64",
+      "embedded_identity": {}
+    },
+    "deserializer_ko": {
+      "path": "artifacts/MAX9296.ko",
+      "bytes": 74816,
+      "sha256": "0fb86a381a9d5df07e4fb95076957f468483aa03f07933fd93c205cf6d61ac51",
+      "kind": "ko",
+      "install_name": "MAX9296.ko",
+      "module_name": "MAX9296",
+      "module_version": null,
+      "depends": [],
+      "vermagic": "5.15.148-tegra SMP preempt mod_unload modversions aarch64",
+      "embedded_identity": {}
+    },
+    "overlay": {
+      "path": "artifacts/tegra234-p3767-camera-p3768-ECM300_MAX9296.dtbo",
+      "bytes": 17811,
+      "sha256": "64736049e7fca41ad110c608a684351742b6f5dc221b24bd90d0f038a37219c2",
+      "kind": "dtbo",
+      "install_name": "tegra234-p3767-camera-p3768-ECM300_MAX9296.dtbo"
+    },
+    "isp": {
+      "path": "artifacts/Transcend_GMSL_ECM300.isp",
+      "bytes": 90445,
+      "sha256": "958c36b230ab5d6a29f0a4a11524a0d7d37d8e475ff5f00686887de0ee668c3f",
+      "kind": "isp",
+      "install_name": "camera_overrides.isp"
+    }
+  },
+  "installation_policy": {
+    "isp_destination": "STANDARD"
+  }
+}

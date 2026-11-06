@@ -99,6 +99,12 @@ def collect(system, manifest, contents, old_entries):
             require(len(info.get('name', [])) == 1 and
                     info.get('vermagic', [''])[0].split()[0] == kernel,
                     'Module embedded identity/kernel is ambiguous: ' + path, 'MODULE_RENAME_CONFLICT')
+            # The two IMX415 GMSL drivers share an OF alias across different deserializers.
+            if manifest['connection'] == 'GMSL' and matches[0] == manifest['artifacts']['sensor_ko']['module_name']:
+                deserializer = manifest['artifacts']['deserializer_ko']['module_name']
+                require(deserializer in info.get('depends', [''])[0].split(','),
+                        'Existing GMSL sensor driver uses a different or unknown deserializer: ' + path,
+                        'MODULE_RENAME_CONFLICT')
             owner = system.package_owners(path)
             new = matches[0]
             mapping[row['module']] = new

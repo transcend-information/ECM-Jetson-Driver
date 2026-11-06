@@ -72,9 +72,9 @@ def select(host, catalog, ask, current=None, report=None):
                 break
             options = {k: v for k, v in matching.items() if v['connection'] == connection}
             if connection == 'GMSL':
-                ordered = sorted(options, key=lambda k: (int(options[k]['serdes'].split('/')[-1].replace('MAX', '')), k))
-                rows = [(k, options[k]['serdes'].replace('/', ' / ') + ' | Ports ' + options[k]['port'] +
-                         ' | ' + ('Included' if catalog.manifest(k) is not None else 'Awaiting artifacts')) for k in ordered]
+                rows = [(k, item['serdes'].replace('/', ' / ') + ' | Ports ' + item['port'] +
+                         ' | ' + ('Included' if catalog.manifest(k) is not None else 'Awaiting artifacts'))
+                        for k, item in options.items()]
                 selected = choose('Select serializer / deserializer', host, current, family, rows, ask,
                                   selected_family=selected_family)
                 if selected is None:
@@ -91,5 +91,5 @@ def select(host, catalog, ask, current=None, report=None):
                 report.event('package-selection', package_id=selected,
                              detected_jetpack=host.get('jetpack'), package_jetpack=family,
                              product=item['product'], sensor=sensor, connection=connection,
-                             serdes=item.get('serdes'), selection_scope='USER_SELECTED_NOT_HARDWARE_DETECTED')
+                             serdes=item.get('serdes'), port=item['port'], selection_scope='USER_SELECTED_NOT_HARDWARE_DETECTED')
             return selected
